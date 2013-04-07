@@ -3,6 +3,7 @@ abstract: 'CPAN module authoring tool'
 author:
   - 'Tokuhiro Matsuno < tokuhirom @ gmail.com >'
 build_requires:
+  File::Which: 0
   Test::More: 0.98
   Test::Requires: 0
 configure_requires:
@@ -27,7 +28,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.0.50
+    version: v0.0.51
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
     version: 0
@@ -178,7 +179,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.0.50
+version: v0.0.51
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
   - 'Daisuke Murase <typester@cpan.org>'

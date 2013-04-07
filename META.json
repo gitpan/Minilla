@@ -70,6 +70,7 @@
       },
       "test" : {
          "requires" : {
+            "File::Which" : "0",
             "Test::More" : "0.98",
             "Test::Requires" : "0"
          }
@@ -78,7 +79,7 @@
    "provides" : {
       "Minilla" : {
          "file" : "lib/Minilla.pm",
-         "version" : "v0.0.50"
+         "version" : "v0.0.51"
       },
       "Minilla::CLI" : {
          "file" : "lib/Minilla/CLI.pm"
@@ -212,7 +213,7 @@
          "web" : "https://github.com/tokuhirom/Minilla"
       }
    },
-   "version" : "v0.0.50",
+   "version" : "v0.0.51",
    "x_contributors" : [
       "mattn <mattn.jp@gmail.com>",
       "Daisuke Murase <typester@cpan.org>",
