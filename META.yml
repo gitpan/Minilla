@@ -28,7 +28,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.0.51
+    version: v0.0.52
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
     version: 0
@@ -179,7 +179,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.0.51
+version: v0.0.52
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
   - 'Daisuke Murase <typester@cpan.org>'
