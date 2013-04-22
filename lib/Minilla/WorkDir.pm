@@ -12,7 +12,7 @@ use Time::Piece qw(gmtime);
 use File::Basename qw(dirname);
 
 use Minilla::Logger;
-use Minilla::Util qw(randstr cmd slurp slurp_raw spew_raw pod_escape);
+use Minilla::Util qw(randstr cmd cmd_perl slurp slurp_raw spew_raw pod_escape);
 use Minilla::FileGatherer;
 use Minilla::ReleaseTest;
 
@@ -21,13 +21,10 @@ use Moo;
 has project => (
     is => 'ro',
     required => 1,
+    handles => [qw(files)],
 );
 
 has dir => (
-    is => 'lazy',
-);
-
-has files => (
     is => 'lazy',
 );
 
@@ -67,20 +64,12 @@ sub _build_prereq_specs {
     return $cpanfile->prereq_specs;
 }
 
-sub _build_files {
-    my $self = shift;
-
-    my @files = Minilla::FileGatherer->new(
-        exclude_match => $self->project->config->{'FileGatherer'}->{exclude_match},
-    )->gather_files(
-        $self->project->dir
-    );
-    \@files;
-}
-
 sub _build_manifest_files {
     my $self = shift;
-    [@{$self->files}, qw(Build.PL LICENSE META.json META.yml MANIFEST)];
+    [do {
+        my %h;
+        grep {!$h{$_}++} @{$self->files}, qw(Build.PL LICENSE META.json META.yml MANIFEST);
+    }];
 }
 
 sub as_string {
@@ -98,6 +87,11 @@ sub BUILD {
     for my $src (@{$self->files}) {
         next if -d $src;
         debugf("Copying %s\n", $src);
+
+        if (not -e $src) {
+            warnf("Trying to copy non-existing file '$src', ignored\n");
+            next;
+        }
         my $dst = path($self->dir, path($src)->relative($self->project->dir));
         path($dst->dirname)->mkpath;
         path($src)->copy($dst);
@@ -133,8 +127,8 @@ sub build {
 
     Minilla::ReleaseTest->write_release_tests($self->project, $self->dir);
 
-    cmd($^X, 'Build.PL');
-    cmd($^X, 'Build', 'build');
+    cmd_perl('Build.PL');
+    cmd_perl('Build', 'build');
 }
 
 sub _rewrite_changes {
@@ -169,6 +163,7 @@ sub _rewrite_pod {
 #   }
 }
 
+# Return non-zero if fail
 sub dist_test {
     my ($self, @targets) = @_;
 
@@ -177,10 +172,11 @@ sub dist_test {
     $self->project->verify_prereqs([qw(runtime)], $_) for qw(requires recommends);
     $self->project->verify_prereqs([qw(test)], $_) for qw(requires recommends);
 
-    {
+    eval {
         my $guard = pushd($self->dir);
-        cmd($^X, 'Build', 'test');
-    }
+        cmd_perl('Build', 'test');
+    };
+    return $@ ? 1 : 0;
 }
 
 sub dist {

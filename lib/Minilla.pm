@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v0.0.53");
+use version; our $VERSION = version->declare("v0.0.54");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -12,6 +12,8 @@ sub auto_install { $AUTO_INSTALL }
 
 1;
 __END__
+
+=for stopwords MINILLA
 
 =encoding utf8
 
@@ -108,6 +110,10 @@ But, you can write configurations to I<minil.toml> file in L<TOML|https://github
 
 You can write 'name' instead of automatically detecting project name out of the directory name.
 
+=item readme_from
+
+You can specify the file to generate the README.md. This is a main module path by default.
+
 =item no_github_issues
 
 Minilla sets bugtracker as github issues by default. But if you want to use RT, you can set this variable.
@@ -118,7 +124,7 @@ Minilla sets bugtracker as github issues by default. But if you want to use RT, 
 
 =over 4
 
-=item Why don't you provide plugin support?
+=item Why don't you provide plug-in support?
 
 If you want to pluggable thing, it's already exist dzil :P
 And if you like a behavior like Minilla, you can use L<Dist::Milla>, the sister project of Minilla.
@@ -148,14 +154,14 @@ Your executables must be in F<script/>. It's L<Module::Build::Tiny>'s rule.
 
 =item How to switch from Module::Install/Module::Build/Dist::Zilla?
 
-You can use experimental `minil migrate` subcommand.
+You can use experimental `minil migrate` sub-command.
 See L<Minilla::CLI::Migrate> for more details.
 
 =back
 
 =head1 AUTHORS
 
-Tokuhiro Matsuno E<lt> tokuhirom @ gmail.com E<gt>
+Tokuhiro Matsuno E<lt> tokuhirom@gmail.com E<gt>
 
 Tatsuhiko Miyagawa
 

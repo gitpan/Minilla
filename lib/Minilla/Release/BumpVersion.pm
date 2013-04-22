@@ -6,17 +6,20 @@ use ExtUtils::MakeMaker qw(prompt);
 
 use Minilla::Util qw(find_file require_optional cmd);
 use Minilla::Logger;
+use Module::BumpVersion;
 
 sub init {
     require_optional(
-        'Perl/Version.pm', 'Release engineering'
+        'Module/BumpVersion.pm', 'Release engineering'
+    );
+    require_optional(
+        'Version/Next.pm', 'Release engineering'
     );
 }
 
 sub run {
     my ($self, $project, $opts) = @_;
 
-    # Note: perl-revision command is included in Perl::Version.
     if (my $ver = prompt("Next Release?", $self->default_new_version($project))) {
         my @opts;
         push @opts, '-set', $ver;
@@ -24,7 +27,7 @@ sub run {
             push @opts, '-dryrun';
         }
         unless ($opts->{dry_run}) {
-            cmd('perl-reversion', @opts);
+            $self->bump_version($project, $ver);
 
             # clear old version information
             $project->clear_metadata();
@@ -36,6 +39,17 @@ sub run {
     }
 }
 
+sub bump_version {
+    my ($self, $project, $version) = @_;
+
+    for my $file ($project->perl_files) {
+        next if $file =~ /\.t$/;
+
+        my $bump = Module::BumpVersion->load($file);
+        $bump->set_version($version);
+    }
+}
+
 sub default_new_version {
     my ($self, $project) = @_;
     @_==2 or die;
@@ -44,14 +58,9 @@ sub default_new_version {
     if (not exists_tagged_version($curver)) {
         $curver;
     } else {
-        my $version = Perl::Version->new( $curver );
-        if ($version->is_alpha) {
-            $version->inc_alpha;
-        } else {
-            my $pos = $version->components-1;
-            $version->increment($pos);
-        }
-        $version;
+        # $project->metadata->version returns version.pm object.
+        # But stringify was needed by Version::Next.
+        return Version::Next::next_version("$curver");
     }
 }
 

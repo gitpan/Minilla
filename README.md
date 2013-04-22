@@ -81,13 +81,17 @@ But, you can write configurations to _minil.toml_ file in [TOML](https://github.
 
     You can write 'name' instead of automatically detecting project name out of the directory name.
 
+- readme\_from
+
+    You can specify the file to generate the README.md. This is a main module path by default.
+
 - no\_github\_issues
 
     Minilla sets bugtracker as github issues by default. But if you want to use RT, you can set this variable.
 
 # FAQ
 
-- Why don't you provide plugin support?
+- Why don't you provide plug-in support?
 
     If you want to pluggable thing, it's already exist dzil :P
     And if you like a behavior like Minilla, you can use [Dist::Milla](http://search.cpan.org/perldoc?Dist::Milla), the sister project of Minilla.
@@ -117,12 +121,12 @@ But, you can write configurations to _minil.toml_ file in [TOML](https://github.
 
 - How to switch from Module::Install/Module::Build/Dist::Zilla?
 
-    You can use experimental \`minil migrate\` subcommand.
+    You can use experimental \`minil migrate\` sub-command.
     See [Minilla::CLI::Migrate](http://search.cpan.org/perldoc?Minilla::CLI::Migrate) for more details.
 
 # AUTHORS
 
-Tokuhiro Matsuno < tokuhirom @ gmail.com >
+Tokuhiro Matsuno < tokuhirom@gmail.com >
 
 Tatsuhiko Miyagawa
 

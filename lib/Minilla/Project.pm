@@ -18,7 +18,7 @@ use Minilla::Metadata;
 use Minilla::WorkDir;
 use Minilla::ReleaseTest;
 use Minilla::ModuleMaker::ModuleBuild;
-use Minilla::Util qw(slurp_utf8 find_dir cmd spew_raw);
+use Minilla::Util qw(slurp_utf8 find_dir cmd spew_raw slurp_raw);
 
 use Moo;
 
@@ -35,6 +35,10 @@ has module_maker => (
 );
 
 has dist_name => (
+    is => 'lazy',
+);
+
+has build_class => (
     is => 'lazy',
 );
 
@@ -57,12 +61,16 @@ has work_dir => (
     is => 'lazy',
 );
 
+has files => (
+    is => 'lazy',
+);
+
 has no_index => (
     is => 'ro',
     default => sub {
         {
             directory => [qw(
-                t xt inc share eg examples
+                t xt inc share eg examples author
             ) ]
         }
     },
@@ -122,7 +130,7 @@ sub _build_dist_name {
         $dist_name = $conf->{name};
     }
     unless (defined $dist_name) {
-        infof("There is no minil.toml. Detecting project name from directory name.\n");
+        infof("Detecting project name from directory name.\n");
         $dist_name = do {
             local $_ = basename($self->dir);
             $_ =~ s!\Ap5-!!;
@@ -136,6 +144,17 @@ sub _build_dist_name {
     }
 
     return $dist_name;
+}
+
+sub _build_build_class {
+    my $self = shift;
+
+    my $build_class;
+    if (my $conf = $self->config) {
+        $build_class = $conf->{build}{build_class};
+    }
+
+    return $build_class || 'Module::Build';
 }
 
 sub _build_main_module_path {
@@ -321,6 +340,11 @@ sub cpan_meta {
     return $meta;
 }
 
+sub readme_from {
+    my $self = shift;
+    $self->config->{readme_from} || $self->main_module_path;
+}
+
 sub regenerate_files {
     my $self = shift;
 
@@ -344,7 +368,7 @@ sub regenerate_readme_md {
     require Pod::Markdown;
 
     my $parser = Pod::Markdown->new;
-    $parser->parse_from_file($self->main_module_path);
+    $parser->parse_from_file($self->readme_from);
 
     my $fname = File::Spec->catfile($self->dir, 'README.md');
     spew_raw($fname, $parser->as_markdown);
@@ -394,6 +418,26 @@ sub _build_work_dir {
     Minilla::WorkDir->new(
         project  => $self,
     );
+}
+
+sub _build_files {
+    my $self = shift;
+    my $conf = $self->config->{'FileGatherer'};
+    my @files = Minilla::FileGatherer->new(
+        exclude_match => $conf->{exclude_match},
+        exists $conf->{include_dotfiles} ? (include_dotfiles => $conf->{include_dotfiles}) : (),
+    )->gather_files(
+        $self->dir
+    );
+    \@files;
+}
+
+sub perl_files {
+    my $self = shift;
+    my @files = @{$self->files};
+    grep {
+        $_ =~ /\.(?:pm|pl|t)$/i || slurp_raw($_) =~ m{ ^ \#\! .* perl }ix
+    } @files;
 }
 
 1;

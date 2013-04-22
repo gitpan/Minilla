@@ -35,7 +35,8 @@ sub run {
     $project->verify_prereqs( [qw(develop test runtime)], $_ ) for qw(requires recommends);
 
     my $work_dir = $project->work_dir;
-    $work_dir->dist_test(@args);
+    my $code = $work_dir->dist_test(@args);
+    exit $code;
 }
 
 1;
@@ -58,5 +59,5 @@ Minilla::CLI::Test - Run test cases
 
 =head1 DESCRIPTION
 
-This subcommand run test cases.
+This sub-command run test cases.
 

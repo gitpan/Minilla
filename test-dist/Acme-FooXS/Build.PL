@@ -9,13 +9,13 @@ use strict;
 use warnings;
 use utf8;
 
-use Module::Build;
+use builder::MyBuilder;
 use File::Basename;
 use File::Spec;
 use CPAN::Meta;
 use CPAN::Meta::Prereqs;
 
-my %args = (
+my $builder = builder::MyBuilder->new(
     license              => 'perl',
     dynamic_config       => 0,
 
@@ -24,29 +24,14 @@ my %args = (
     },
 
     no_index    => { 'directory' => [ 'inc' ] },
-    name        => 'Minilla',
-    module_name => 'Minilla',
+    name        => 'Acme-FooXS',
+    module_name => 'Acme::FooXS',
 
     script_files => [glob('script/*'), glob('bin/*')],
 
     test_files           => ((-d '.git' || $ENV{RELEASE_TESTING}) && -d 'xt') ? 't/ xt/' : 't/',
     recursive_test_files => 1,
 );
-if (-d 'share') {
-    $args{share_dir} = 'share';
-}
-
-my $builder = Module::Build->subclass(
-    class => 'MyBuilder',
-    code => q{
-        sub ACTION_distmeta {
-            die "Do not run distmeta. Install Minilla and `minil install` instead.\n";
-        }
-        sub ACTION_installdeps {
-            die "Do not run installdeps. Run `cpanm --installdeps .` instead.\n";
-        }
-    }
-)->new(%args);
 $builder->create_build_script();
 
 my $mbmeta = CPAN::Meta->load_file('MYMETA.json');

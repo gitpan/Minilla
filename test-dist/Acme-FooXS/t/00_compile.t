@@ -2,8 +2,8 @@ use strict;
 use Test::More;
 
 use_ok $_ for qw(
-    Minilla
-    Module::BumpVersion
+    Acme::FooXS
 );
 
 done_testing;
+

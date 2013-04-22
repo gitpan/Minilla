@@ -4,6 +4,7 @@ use warnings;
 use utf8;
 use Carp ();
 use File::Basename ();
+use File::Spec ();
 use Minilla::Logger ();
 
 use parent qw(Exporter);
@@ -13,7 +14,8 @@ our @EXPORT_OK = qw(
     randstr
     slurp slurp_utf8 slurp_raw
     spew  spew_utf8  spew_raw
-    edit_file require_optional cmd
+    edit_file require_optional
+    cmd cmd_perl
     pod_escape
     parse_options);
 
@@ -121,7 +123,7 @@ sub require_optional {
                 $_;
             };
             Carp::croak( "$feature requires $library, but it is not available."
-                  . " Please install $library using your prefer CPAN client" );
+                  . " Please install $library using your preferred CPAN client" );
         }
         else {
             die $@;
@@ -129,8 +131,23 @@ sub require_optional {
     }
 }
 
+sub cmd_perl {
+    my(@args) = @_;
+
+    require Config;
+
+    my %std_inc = map { $_ => 1 } @Config::Config{qw(
+        sitelibexp sitearchexp
+        privlibexp archlibexp
+    )};
+    my @non_std_inc = map { File::Spec->rel2abs($_) }
+                      grep { not $std_inc{$_} } @INC;
+
+    cmd($^X, (map { "-I$_" } @non_std_inc), @args);
+}
+
 sub cmd {
-    Minilla::Logger::infof("%s\n", "@_");
+    Minilla::Logger::infof("\$ %s\n", "@_");
     system(@_) == 0
         or Minilla::Logger::errorf("Giving up.\n");
 }

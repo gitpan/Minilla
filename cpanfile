@@ -30,7 +30,7 @@ requires 'Data::Section::Simple' => 0.04;
 
 # Modules required by minil new/minil dist/minil release are optional.
 # It's good for contributors
-recommends 'Perl::Version';
+recommends 'Version::Next';
 recommends 'Pod::Escapes';
 recommends 'CPAN::Uploader';
 # TODO: remove this dependency after cpanm release. look #12
@@ -41,16 +41,15 @@ recommends 'Software::License';
 
 # release testing
 recommends 'Test::Pod';
-recommends 'Test::Spelling';
-recommends 'Pod::Wordlist::hanekomu';
+recommends 'Test::Spellunker', 'v0.0.15';
 recommends 'Test::MinimumVersion' => '0.101080';
 recommends 'Test::CPAN::Meta';
-recommends 'Pod::Wordlist::hanekomu';
 
 on 'test' => sub {
     requires 'Test::More' => '0.98';
     requires 'Test::Requires' => 0;
     requires 'File::Which';
+    recommends 'Devel::CheckLib';
     suggests 'Dist::Zilla';
 };
 
