@@ -73,6 +73,7 @@ t/project/contributors.t
 t/project/detect_source_path.t
 t/project/meta.t
 t/work_dir/_rewrite_pod.t
+t/work_dir/copy.t
 t/work_dir/dist.t
 test-dist/Acme-FooXS/Build.PL
 test-dist/Acme-FooXS/Changes

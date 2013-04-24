@@ -29,7 +29,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.0.54
+    version: v0.0.55
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
   Minilla::CLI::Build:
@@ -128,6 +128,7 @@ requires:
   Data::Section::Simple: 0.04
   File::Copy::Recursive: 0
   File::pushd: 0
+  Getopt::Long: 0
   Module::CPANfile: 0.9025
   Module::Metadata: v1.0.11
   Moo: 1.001
@@ -135,13 +136,15 @@ requires:
   Pod::Markdown: 0
   TOML: 0.91
   Time::Piece: 1.16
+  Try::Tiny: 0
   parent: 0
   perl: 5.008005
+  version: 0
 resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.0.54
+version: v0.0.55
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
   - 'Daisuke Murase <typester@cpan.org>'
