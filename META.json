@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno < tokuhirom@gmail.com >"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.0.55",
+   "generated_by" : "Minilla/v0.0.56",
    "license" : "perl_5",
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -35,7 +35,7 @@
             "Test::CPAN::Meta" : "0",
             "Test::MinimumVersion" : "0.10108",
             "Test::Pod" : "1.41",
-            "Test::Spellunker" : "v0.0.16"
+            "Test::Spellunker" : "v0.2.2"
          }
       },
       "runtime" : {
@@ -46,12 +46,13 @@
             "Test::CPAN::Meta" : "0",
             "Test::MinimumVersion" : "0.101080",
             "Test::Pod" : "0",
-            "Test::Spellunker" : "v0.0.15",
+            "Test::Spellunker" : "v0.2.2",
             "Version::Next" : "0"
          },
          "requires" : {
-            "App::cpanminus" : "1.6003",
+            "App::cpanminus" : "1.6902",
             "Archive::Tar" : "1.60",
+            "CPAN::Meta" : "0",
             "Data::Section::Simple" : "0.04",
             "File::Copy::Recursive" : "0",
             "File::pushd" : "0",
@@ -61,12 +62,17 @@
             "Moo" : "1.001",
             "Path::Tiny" : "0",
             "Pod::Markdown" : "0",
-            "TOML" : "0.91",
+            "Pod::Simple" : "0",
+            "TOML" : "0.92",
+            "Term::ANSIColor" : "0",
             "Time::Piece" : "1.16",
             "Try::Tiny" : "0",
             "parent" : "0",
             "perl" : "5.008005",
             "version" : "0"
+         },
+         "suggests" : {
+            "Devel::PPPort" : "0"
          }
       },
       "test" : {
@@ -74,6 +80,7 @@
             "Devel::CheckLib" : "0"
          },
          "requires" : {
+            "File::Temp" : "0",
             "File::Which" : "0",
             "Test::More" : "0.98",
             "Test::Requires" : "0"
@@ -86,7 +93,7 @@
    "provides" : {
       "Minilla" : {
          "file" : "lib/Minilla.pm",
-         "version" : "v0.0.56"
+         "version" : "v0.1.0"
       },
       "Minilla::CLI" : {
          "file" : "lib/Minilla/CLI.pm"
@@ -144,6 +151,9 @@
       },
       "Minilla::Metadata" : {
          "file" : "lib/Minilla/Metadata.pm"
+      },
+      "Minilla::Metadata::PodParser" : {
+         "file" : "lib/Minilla/Metadata/PodParser.pm"
       },
       "Minilla::Migrate" : {
          "file" : "lib/Minilla/Migrate.pm"
@@ -223,7 +233,7 @@
          "web" : "https://github.com/tokuhirom/Minilla"
       }
    },
-   "version" : "v0.0.56",
+   "version" : "v0.1.0",
    "x_contributors" : [
       "mattn <mattn.jp@gmail.com>",
       "Daisuke Murase <typester@cpan.org>",

@@ -25,6 +25,7 @@ lib/Minilla/License/Perl_5.pm
 lib/Minilla/License/Unknown.pm
 lib/Minilla/Logger.pm
 lib/Minilla/Metadata.pm
+lib/Minilla/Metadata/PodParser.pm
 lib/Minilla/Migrate.pm
 lib/Minilla/ModuleMaker/ModuleBuild.pm
 lib/Minilla/Profile/Base.pm
@@ -59,6 +60,7 @@ t/data/bsd.dat
 t/dist.t
 t/filegatherer.t
 t/gitignore.t
+t/metadata/pod_parser.t
 t/migrate/changes.t
 t/migrate/dzil.t
 t/migrate/dzil/Acme-Dzil/dist.ini
@@ -71,6 +73,7 @@ t/profile-xs.t
 t/profile/module-build.t
 t/project/contributors.t
 t/project/detect_source_path.t
+t/project/from.t
 t/project/meta.t
 t/work_dir/_rewrite_pod.t
 t/work_dir/copy.t

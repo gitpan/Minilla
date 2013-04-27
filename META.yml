@@ -3,6 +3,7 @@ abstract: 'CPAN module authoring tool'
 author:
   - 'Tokuhiro Matsuno < tokuhirom@gmail.com >'
 build_requires:
+  File::Temp: 0
   File::Which: 0
   Test::More: 0.98
   Test::Requires: 0
@@ -11,7 +12,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.0.55, CPAN::Meta::Converter version 2.130880'
+generated_by: 'Minilla/v0.0.56, CPAN::Meta::Converter version 2.130880'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -29,7 +30,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.0.56
+    version: v0.1.0
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
   Minilla::CLI::Build:
@@ -68,6 +69,8 @@ provides:
     file: lib/Minilla/Logger.pm
   Minilla::Metadata:
     file: lib/Minilla/Metadata.pm
+  Minilla::Metadata::PodParser:
+    file: lib/Minilla/Metadata/PodParser.pm
   Minilla::Migrate:
     file: lib/Minilla/Migrate.pm
   Minilla::ModuleMaker::ModuleBuild:
@@ -119,11 +122,12 @@ recommends:
   Test::CPAN::Meta: 0
   Test::MinimumVersion: 0.101080
   Test::Pod: 0
-  Test::Spellunker: v0.0.15
+  Test::Spellunker: v0.2.2
   Version::Next: 0
 requires:
-  App::cpanminus: 1.6003
+  App::cpanminus: 1.6902
   Archive::Tar: 1.60
+  CPAN::Meta: 0
   Data::Section::Simple: 0.04
   File::Copy::Recursive: 0
   File::pushd: 0
@@ -133,7 +137,9 @@ requires:
   Moo: 1.001
   Path::Tiny: 0
   Pod::Markdown: 0
-  TOML: 0.91
+  Pod::Simple: 0
+  TOML: 0.92
+  Term::ANSIColor: 0
   Time::Piece: 1.16
   Try::Tiny: 0
   parent: 0
@@ -143,7 +149,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.0.56
+version: v0.1.0
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
   - 'Daisuke Murase <typester@cpan.org>'
