@@ -93,7 +93,7 @@
    "provides" : {
       "Minilla" : {
          "file" : "lib/Minilla.pm",
-         "version" : "v0.1.0"
+         "version" : "v0.2.0"
       },
       "Minilla::CLI" : {
          "file" : "lib/Minilla/CLI.pm"
@@ -233,7 +233,7 @@
          "web" : "https://github.com/tokuhirom/Minilla"
       }
    },
-   "version" : "v0.1.0",
+   "version" : "v0.2.0",
    "x_contributors" : [
       "mattn <mattn.jp@gmail.com>",
       "Daisuke Murase <typester@cpan.org>",
@@ -243,9 +243,9 @@
       "Keiji, Yoshimi <walf443@gmail.com>",
       "Fuji, Goro <g.psy.va@gmail.com>",
       "Syohei YOSHIDA <syohex@gmail.com>",
-      "Masayuki Matsuki <y.songmu@gmail.com>",
       "Daisuke Maki <lestrrat+github@gmail.com>",
       "xaicron <xaicron@gmail.com>",
+      "Masayuki Matsuki <y.songmu@gmail.com>",
       "tokuhirom <tokuhirom@gmail.com>"
    ]
 }
