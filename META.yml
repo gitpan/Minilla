@@ -12,7 +12,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.0.56, CPAN::Meta::Converter version 2.130880'
+generated_by: 'Minilla/v0.3.0, CPAN::Meta::Converter version 2.130880'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -30,7 +30,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.3.0
+    version: v0.3.1
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
   Minilla::CLI::Build:
@@ -99,8 +99,8 @@ provides:
     file: lib/Minilla/Release/DistTest.pm
   Minilla::Release::MakeDist:
     file: lib/Minilla/Release/MakeDist.pm
-  Minilla::Release::RegenerateMeta:
-    file: lib/Minilla/Release/RegenerateMeta.pm
+  Minilla::Release::RegenerateFiles:
+    file: lib/Minilla/Release/RegenerateFiles.pm
   Minilla::Release::RewriteChanges:
     file: lib/Minilla/Release/RewriteChanges.pm
   Minilla::Release::Tag:
@@ -150,7 +150,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.3.0
+version: v0.3.1
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
   - 'Daisuke Murase <typester@cpan.org>'

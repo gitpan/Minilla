@@ -40,7 +40,7 @@ lib/Minilla/Release/CheckUntrackedFiles.pm
 lib/Minilla/Release/Commit.pm
 lib/Minilla/Release/DistTest.pm
 lib/Minilla/Release/MakeDist.pm
-lib/Minilla/Release/RegenerateMeta.pm
+lib/Minilla/Release/RegenerateFiles.pm
 lib/Minilla/Release/RewriteChanges.pm
 lib/Minilla/Release/Tag.pm
 lib/Minilla/Release/UploadToCPAN.pm

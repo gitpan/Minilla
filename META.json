@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno < tokuhirom@gmail.com >"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.0.56",
+   "generated_by" : "Minilla/v0.3.0",
    "license" : "perl_5",
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -94,7 +94,7 @@
    "provides" : {
       "Minilla" : {
          "file" : "lib/Minilla.pm",
-         "version" : "v0.3.0"
+         "version" : "v0.3.1"
       },
       "Minilla::CLI" : {
          "file" : "lib/Minilla/CLI.pm"
@@ -198,8 +198,8 @@
       "Minilla::Release::MakeDist" : {
          "file" : "lib/Minilla/Release/MakeDist.pm"
       },
-      "Minilla::Release::RegenerateMeta" : {
-         "file" : "lib/Minilla/Release/RegenerateMeta.pm"
+      "Minilla::Release::RegenerateFiles" : {
+         "file" : "lib/Minilla/Release/RegenerateFiles.pm"
       },
       "Minilla::Release::RewriteChanges" : {
          "file" : "lib/Minilla/Release/RewriteChanges.pm"
@@ -234,7 +234,7 @@
          "web" : "https://github.com/tokuhirom/Minilla"
       }
    },
-   "version" : "v0.3.0",
+   "version" : "v0.3.1",
    "x_contributors" : [
       "mattn <mattn.jp@gmail.com>",
       "Daisuke Murase <typester@cpan.org>",
