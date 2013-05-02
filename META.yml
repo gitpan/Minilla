@@ -30,7 +30,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.2.0
+    version: v0.3.0
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
   Minilla::CLI::Build:
@@ -129,6 +129,7 @@ requires:
   Archive::Tar: 1.60
   CPAN::Meta: 0
   Data::Section::Simple: 0.04
+  ExtUtils::Manifest: 1.54
   File::Copy::Recursive: 0
   File::pushd: 0
   Getopt::Long: 0
@@ -149,13 +150,12 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.2.0
+version: v0.3.0
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
   - 'Daisuke Murase <typester@cpan.org>'
   - 'kazhiramatsu <kazhiramatsu.github@gmail.com>'
   - 'Tatsuhiko Miyagawa <miyagawa@bulknews.net>'
-  - 'tokuhirom <tokuhirom@gmail.co>'
   - 'Keiji, Yoshimi <walf443@gmail.com>'
   - 'Fuji, Goro <g.psy.va@gmail.com>'
   - 'Syohei YOSHIDA <syohex@gmail.com>'
