@@ -3,15 +3,16 @@ use strict;
 use warnings;
 use utf8;
 
-use Path::Tiny;
-use File::Copy::Recursive qw(rcopy);
+use File::Path qw(rmtree mkpath);
+use File::Spec;
 
 use Minilla::Project;
+use Minilla::WorkDir;
 use Minilla::Logger;
 use Minilla::Util qw(parse_options);
 
 sub run {
-    my ($self, @args) = @_;
+    my ($class, @args) = @_;
 
     my $test = 1;
     parse_options(
@@ -22,15 +23,14 @@ sub run {
     my $project = Minilla::Project->new();
     $project->regenerate_files();
 
-    # generate project directory
-    my $work_dir = $project->work_dir;
-    $work_dir->build();
+    my $dst = File::Spec->rel2abs(sprintf("%s-%s", $project->dist_name, $project->version));
 
-    my $dst = sprintf("%s-%s", $project->dist_name, $project->version);
-    infof("Copying %s to %s\n", $work_dir->dir, $dst);
-    path($dst)->remove_tree();
-    rcopy($work_dir->dir => $dst)
-        or errorf("%s\n", $!);
+    # generate project directory
+    infof("Create %s\n", $dst);
+    rmtree($dst);
+    mkpath($dst);
+    my $work_dir = Minilla::WorkDir->new(project => $project, dir => $dst, cleanup => 0);
+    $work_dir->build();
 }
 
 1;

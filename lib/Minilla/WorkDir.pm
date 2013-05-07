@@ -38,6 +38,11 @@ has [qw(prereq_specs)] => (
     is => 'lazy',
 );
 
+has 'cleanup' => (
+    is => 'ro',
+    default => sub { $Minilla::DEBUG ? 0 : 1 },
+);
+
 has changes_time => (
     is => 'lazy',
 );
@@ -48,8 +53,9 @@ sub _build_changes_time { scalar(gmtime()) }
 
 sub DEMOLISH {
     my $self = shift;
-    unless ($Minilla::DEBUG) {
-        path(path($self->dir)->dirname)->remove_tree({safe => 0});
+    if ($self->cleanup) {
+        infof("Removing %s\n", $self->dir);
+        File::Path::rmtree($self->dir)
     }
 }
 
@@ -96,6 +102,7 @@ sub BUILD {
         }
         my $dst = path($self->dir, path($src)->relative($self->project->dir));
         mkpath($dst->dirname);
+        infof("cp %s %s\n", $src, $dst);
         copy($src => $dst) or die "Copying failed: $src $dst, $!\n";
         chmod((stat($src))[2], $dst) or die "Cannot change mode: $dst, $!\n";
     }
@@ -107,6 +114,8 @@ sub build {
     return if $self->{build}++;
 
     my $guard = pushd($self->dir);
+
+    infof("Building %s\n", $self->dir);
 
     # Generate meta file
     {
@@ -131,6 +140,7 @@ sub build {
     Minilla::ReleaseTest->write_release_tests($self->project, $self->dir);
 
     cmd_perl('Build.PL');
+    cmd_perl('Build', 'build');
     cmd_perl('Build', 'build');
 }
 

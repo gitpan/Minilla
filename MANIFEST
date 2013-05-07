@@ -55,6 +55,7 @@ t/03_step.t
 t/05_metadata.t
 t/Util.pm
 t/bumpversion.t
+t/cli/build.t
 t/data/bsd.dat
 t/dist.t
 t/dist/Acme-FooXS.dat
