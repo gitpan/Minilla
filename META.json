@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno < tokuhirom@gmail.com >"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.3.0",
+   "generated_by" : "Minilla/v0.3.2",
    "license" : "perl_5",
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -59,11 +59,10 @@
             "File::pushd" : "0",
             "Getopt::Long" : "0",
             "Module::CPANfile" : "0.9025",
-            "Module::Metadata" : "v1.0.11",
+            "Module::Metadata" : "1.000012",
             "Moo" : "1.001",
             "Path::Tiny" : "0",
             "Pod::Markdown" : "0",
-            "Pod::Simple" : "0",
             "TOML" : "0.92",
             "Term::ANSIColor" : "0",
             "Time::Piece" : "1.16",
@@ -94,7 +93,7 @@
    "provides" : {
       "Minilla" : {
          "file" : "lib/Minilla.pm",
-         "version" : "v0.3.2"
+         "version" : "v0.4.0"
       },
       "Minilla::CLI" : {
          "file" : "lib/Minilla/CLI.pm"
@@ -152,9 +151,6 @@
       },
       "Minilla::Metadata" : {
          "file" : "lib/Minilla/Metadata.pm"
-      },
-      "Minilla::Metadata::PodParser" : {
-         "file" : "lib/Minilla/Metadata/PodParser.pm"
       },
       "Minilla::Migrate" : {
          "file" : "lib/Minilla/Migrate.pm"
@@ -234,18 +230,18 @@
          "web" : "https://github.com/tokuhirom/Minilla"
       }
    },
-   "version" : "v0.3.2",
+   "version" : "v0.4.0",
    "x_contributors" : [
       "mattn <mattn.jp@gmail.com>",
       "Daisuke Murase <typester@cpan.org>",
       "kazhiramatsu <kazhiramatsu.github@gmail.com>",
       "Tatsuhiko Miyagawa <miyagawa@bulknews.net>",
       "Keiji, Yoshimi <walf443@gmail.com>",
-      "Fuji, Goro <g.psy.va@gmail.com>",
       "Daisuke Maki <lestrrat+github@gmail.com>",
-      "xaicron <xaicron@gmail.com>",
       "Masayuki Matsuki <y.songmu@gmail.com>",
       "Syohei YOSHIDA <syohex@gmail.com>",
+      "xaicron <xaicron@gmail.com>",
+      "Fuji, Goro <g.psy.va@gmail.com>",
       "tokuhirom <tokuhirom@gmail.com>"
    ]
 }

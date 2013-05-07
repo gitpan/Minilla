@@ -99,6 +99,15 @@ But, you can write configurations to _minil.toml_ file in [TOML](https://github.
 
     Grab authors information from the file contains pod.
 
+- allow\_pure\_perl
+
+        allow_pure_perl=1
+
+    A bool indicating the module is still functional without its XS parts.  When an XS module is build
+    with `--pureperl_only`, it will otherwise fail.
+
+    It affects to [Module::Build](http://search.cpan.org/perldoc?Module::Build) 0.4005+ only.
+
 - no\_github\_issues
 
         no_github_issues=true
@@ -113,6 +122,19 @@ But, you can write configurations to _minil.toml_ file in [TOML](https://github.
     Minilla sets META.json's no\_index as `directory => ['t', 'xt', 'inc', 'share', 'eg', 'examples', 'author']`
     by default. But if you want to change them, you can set this section variable. If this section is set,
     specified variables are only used, in fact default settings are not merged.
+
+- script\_files
+
+        script_files = ['bin/foo', 'script/*']
+
+    Minilla sets install script files as `['script/*', 'bin/*']` by default.
+
+- build.build\_class
+
+    Specify a custom Module::Build subclass.
+
+        [build]
+        build_class = builder::MyBuilder
 
 # FAQ
 
