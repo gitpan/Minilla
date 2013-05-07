@@ -12,7 +12,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.4.0, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Minilla/v0.4.1, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -30,7 +30,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.4.1
+    version: v0.4.2
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
     version: 0
@@ -175,7 +175,6 @@ requires:
   Module::CPANfile: 0.9025
   Module::Metadata: 1.000012
   Moo: 1.001
-  Path::Tiny: 0
   Pod::Markdown: 0
   TOML: 0.92
   Term::ANSIColor: 0
@@ -188,7 +187,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.4.1
+version: v0.4.2
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
   - 'Daisuke Murase <typester@cpan.org>'
