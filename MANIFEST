@@ -67,6 +67,7 @@ t/migrate/dzil/Acme-Dzil/dist.ini
 t/migrate/dzil/Acme-Dzil/lib/Acme/Dzil.pm
 t/migrate/eumm.t
 t/migrate/no-changes.t
+t/migrate/no-pod.t
 t/migrate/tmpfiles.t
 t/module_maker/allow_pureperl.t
 t/new/dist-name.t
