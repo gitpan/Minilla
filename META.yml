@@ -12,7 +12,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.4.2, CPAN::Meta::Converter version 2.130880'
+generated_by: 'Minilla/v0.4.3, CPAN::Meta::Converter version 2.130880'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -30,7 +30,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.4.3
+    version: v0.4.4
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
   Minilla::CLI::Build:
@@ -120,7 +120,7 @@ recommends:
   Test::CPAN::Meta: 0
   Test::MinimumVersion: 0.101080
   Test::Pod: 0
-  Test::Spellunker: v0.2.2
+  Test::Spellunker: v0.2.7
   Version::Next: 0
 requires:
   App::cpanminus: 1.6902
@@ -134,7 +134,7 @@ requires:
   Module::CPANfile: 0.9025
   Module::Metadata: 1.000012
   Moo: 1.001
-  Pod::Markdown: 0
+  Pod::Markdown: 1.322
   TOML: 0.92
   Term::ANSIColor: 0
   Time::Piece: 1.16
@@ -146,7 +146,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.4.3
+version: v0.4.4
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
   - 'Daisuke Murase <typester@cpan.org>'
@@ -158,4 +158,5 @@ x_contributors:
   - 'Fuji, Goro <g.psy.va@gmail.com>'
   - 'Masayuki Matsuki <y.songmu@gmail.com>'
   - 'Daisuke Maki <lestrrat+github@gmail.com>'
+  - 'moznion <moznion@gmail.com>'
   - 'tokuhirom <tokuhirom@gmail.com>'

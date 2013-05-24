@@ -19,7 +19,7 @@ requires 'TOML', 0.92;
 requires 'App::cpanminus', '1.6902';
 requires 'Module::CPANfile', '0.9025';
 requires 'Module::Metadata' => '1.000012';
-requires 'Pod::Markdown';
+requires 'Pod::Markdown', '1.322';
 
 # File operation
 requires 'File::pushd';
@@ -47,7 +47,7 @@ recommends 'Software::License';
 
 # release testing
 recommends 'Test::Pod';
-recommends 'Test::Spellunker', 'v0.2.2';
+recommends 'Test::Spellunker', 'v0.2.7';
 recommends 'Test::MinimumVersion' => '0.101080';
 recommends 'Test::CPAN::Meta';
 

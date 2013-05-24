@@ -110,7 +110,7 @@ sub authors {
         return $meta->authors;
     }
     $self->config->{authors} || $self->metadata->authors;
-} 
+}
 
 sub abstract {
     my $self = shift;
@@ -121,7 +121,7 @@ sub abstract {
         return $meta->abstract;
     }
     $self->config->{abstract} || $self->metadata->abstract;
-} 
+}
 
 sub _build_dir {
     my $self = shift;
@@ -172,6 +172,7 @@ sub _build_dist_name {
         infof("Detecting project name from directory name.\n");
         $dist_name = do {
             local $_ = basename($self->dir);
+            $_ =~ s!--!-!g;
             $_ =~ s!\Ap5-!!;
             $_;
         };
@@ -368,9 +369,11 @@ sub cpan_meta {
                 $dat->{resources}->{homepage} = $self->config->{homepage} || $http_url;
             } else {
                 # normal repository
-                $dat->{resources}->{repository} = +{
-                    url => $git_url,
-                };
+                if ($git_url !~ m{^file://}) {
+                    $dat->{resources}->{repository} = +{
+                        url => $git_url,
+                    };
+                }
             }
         }
     }
@@ -405,6 +408,7 @@ sub regenerate_readme_md {
     my $self = shift;
 
     require Pod::Markdown;
+    Pod::Markdown->VERSION('1.322');
 
     my $parser = Pod::Markdown->new;
     $parser->parse_from_file($self->readme_from);

@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno < tokuhirom@gmail.com >"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.4.2",
+   "generated_by" : "Minilla/v0.4.3",
    "license" : "perl_5",
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -35,7 +35,7 @@
             "Test::CPAN::Meta" : "0",
             "Test::MinimumVersion" : "0.10108",
             "Test::Pod" : "1.41",
-            "Test::Spellunker" : "v0.2.2"
+            "Test::Spellunker" : "v0.2.7"
          }
       },
       "runtime" : {
@@ -46,7 +46,7 @@
             "Test::CPAN::Meta" : "0",
             "Test::MinimumVersion" : "0.101080",
             "Test::Pod" : "0",
-            "Test::Spellunker" : "v0.2.2",
+            "Test::Spellunker" : "v0.2.7",
             "Version::Next" : "0"
          },
          "requires" : {
@@ -61,7 +61,7 @@
             "Module::CPANfile" : "0.9025",
             "Module::Metadata" : "1.000012",
             "Moo" : "1.001",
-            "Pod::Markdown" : "0",
+            "Pod::Markdown" : "1.322",
             "TOML" : "0.92",
             "Term::ANSIColor" : "0",
             "Time::Piece" : "1.16",
@@ -92,7 +92,7 @@
    "provides" : {
       "Minilla" : {
          "file" : "lib/Minilla.pm",
-         "version" : "v0.4.3"
+         "version" : "v0.4.4"
       },
       "Minilla::CLI" : {
          "file" : "lib/Minilla/CLI.pm"
@@ -229,7 +229,7 @@
          "web" : "https://github.com/tokuhirom/Minilla"
       }
    },
-   "version" : "v0.4.3",
+   "version" : "v0.4.4",
    "x_contributors" : [
       "mattn <mattn.jp@gmail.com>",
       "Daisuke Murase <typester@cpan.org>",
@@ -241,6 +241,7 @@
       "Fuji, Goro <g.psy.va@gmail.com>",
       "Masayuki Matsuki <y.songmu@gmail.com>",
       "Daisuke Maki <lestrrat+github@gmail.com>",
+      "moznion <moznion@gmail.com>",
       "tokuhirom <tokuhirom@gmail.com>"
    ]
 }
