@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v0.4.8");
+use version; our $VERSION = version->declare("v0.4.9");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -128,9 +128,9 @@ Grab abstract information from the file contains pod.
 
 Grab authors information from the file contains pod.
 
-=item allow_pure_perl
+=item allow_pureperl
 
-    allow_pure_perl=1
+    allow_pureperl=1
 
 A bool indicating the module is still functional without its XS parts.  When an XS module is build
 with C<--pureperl_only>, it will otherwise fail.

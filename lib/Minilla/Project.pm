@@ -91,9 +91,9 @@ has script_files => (
 
 no Moo;
 
-sub allow_pure_perl {
+sub allow_pureperl {
     my $self = shift;
-    $self->config->{allow_pure_perl} ? 1 : 0;
+    $self->config->{allow_pureperl} ? 1 : 0;
 }
 
 sub version {
