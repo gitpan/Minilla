@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v0.4.9");
+use version; our $VERSION = version->declare("v0.5.0");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -182,6 +182,23 @@ By default, files will not be included in dist if they begin with a dot. This go
 both for files and for directories.
 
 In almost all cases, the default value (false) is correct.
+
+=item release.pause_config
+
+    [release]
+    pause_config="/path/to/some/.pause"
+
+By setting this value to another PAUSE configuration file (see 
+L<cpan_upload/CONFIGURATION> for the details), it is possible to use another
+PAUSE server (or anything good enough to mimick its upload process) for the
+release step.
+
+To do so, simply add a C<upload_uri> entry in your file to the alternate PAUSE
+server, i.e :
+
+    upload_uri http://127.0.0.1:5000/pause/authenquery
+
+Note that this feature is not officially documented in L<CPAN::Uploader>.
 
 =back
 
