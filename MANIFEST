@@ -72,6 +72,7 @@ t/migrate/no-changes.t
 t/migrate/no-pod.t
 t/migrate/tmpfiles.t
 t/module_maker/allow_pureperl.t
+t/module_maker/c_source.t
 t/new/dist-name.t
 t/profile-xs.t
 t/profile/module-build.t

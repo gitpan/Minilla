@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v0.5.3");
+use version; our $VERSION = version->declare("v0.5.4");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -151,6 +151,15 @@ Minilla sets bugtracker as github issues by default. But if you want to use RT, 
 Minilla sets META.json's no_index as C<< directory => ['t', 'xt', 'inc', 'share', 'eg', 'examples', 'author'] >>
 by default. But if you want to change them, you can set this section variable. If this section is set,
 specified variables are only used, in fact default settings are not merged.
+
+=item c_source
+
+    c_source = ['src']
+
+A directory which contains C source files that the rest of the build may depend
+on.  Any ".c" files in the directory will be compiled to object files.
+The directory will be added to the search path during the compilation and
+linking phases of any C or XS files.
 
 =item script_files
 
