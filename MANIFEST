@@ -87,6 +87,7 @@ t/project/unstable.t
 t/work_dir/_rewrite_pod.t
 t/work_dir/copy.t
 t/work_dir/dist.t
+t/work_dir/release_test.t
 xt/02_perlcritic.t
 META.yml
 MANIFEST

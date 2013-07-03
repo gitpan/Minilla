@@ -1,7 +1,9 @@
 Revision history for Perl extension Minilla
 
-v0.5.4 2013-07-03T07:25:15Z
+v0.5.5 2013-07-03T07:28:22Z
 
+    - Fix the problem about not including the author name in stop words.
+      (moznion)
     - Added new `c_source` configuration option.
       (tokuhirom)
 
