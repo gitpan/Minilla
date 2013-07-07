@@ -1,5 +1,10 @@
 Revision history for Perl extension Minilla
 
+v0.5.6 2013-07-07T02:36:17Z
+
+    - Show error message when Minilla can't get version number.
+      (tokuhirom)
+
 v0.5.5 2013-07-03T07:28:22Z
 
     - Fix the problem about not including the author name in stop words.
