@@ -17,6 +17,7 @@ lib/Minilla/CLI/Install.pm
 lib/Minilla/CLI/Migrate.pm
 lib/Minilla/CLI/New.pm
 lib/Minilla/CLI/Release.pm
+lib/Minilla/CLI/Run.pm
 lib/Minilla/CLI/Test.pm
 lib/Minilla/Errors.pm
 lib/Minilla/FileGatherer.pm

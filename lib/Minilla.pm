@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v0.5.6");
+use version; our $VERSION = version->declare("v0.6.0");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -28,6 +28,7 @@ Minilla - CPAN module authoring tool
     minil dist    - Make your dist tarball
     minil install - Install your dist
     minil release - Release your dist to CPAN
+    minil run     - Run arbitrary commands against build dir
 
 =head1 DESCRIPTION
 
