@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v0.6.0");
+use version; our $VERSION = version->declare("v0.6.1");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -167,6 +167,13 @@ linking phases of any C or XS files.
     script_files = ['bin/foo', 'script/*']
 
 Minilla sets install script files as C<< ['script/*', 'bin/*'] >> by default.
+
+=item PL_files
+
+Specify the PL files.
+
+    [PL_files]
+    lib/Foo/Bar.pm.PL="lib/Foo/Bar.pm"
 
 =item build.build_class
 
