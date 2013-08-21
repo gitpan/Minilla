@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v0.6.3");
+use version; our $VERSION = version->declare("v0.6.4");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -128,6 +128,13 @@ Grab abstract information from the file contains pod.
     authors_from="lib/My/Foo.pod"
 
 Grab authors information from the file contains pod.
+
+=item authority
+
+    authority = "cpan:TOKUHIROM"
+
+Set x_authority attribute to META.
+See L<http://jawnsy.wordpress.com/2011/02/20/what-is-x_authority/> for more details.
 
 =item allow_pureperl
 
