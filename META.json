@@ -81,6 +81,7 @@
             "Devel::CheckLib" : "0"
          },
          "requires" : {
+            "CPAN::Meta::Validator" : "0",
             "File::Temp" : "0",
             "Test::More" : "0.98",
             "Test::Requires" : "0"
@@ -93,7 +94,7 @@
    "provides" : {
       "Minilla" : {
          "file" : "lib/Minilla.pm",
-         "version" : "v0.6.6"
+         "version" : "v0.6.7"
       },
       "Minilla::CLI" : {
          "file" : "lib/Minilla/CLI.pm"
@@ -233,7 +234,7 @@
          "web" : "https://github.com/tokuhirom/Minilla"
       }
    },
-   "version" : "v0.6.6",
+   "version" : "v0.6.7",
    "x_authority" : "cpan:TOKUHIROM",
    "x_contributors" : [
       "mattn <mattn.jp@gmail.com>",
