@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v0.6.7");
+use version; our $VERSION = version->declare("v0.6.8");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -13,7 +13,7 @@ sub auto_install { $AUTO_INSTALL }
 1;
 __END__
 
-=for stopwords MINILLA .mailmap
+=for stopwords MINILLA .mailmap mimick
 
 =encoding utf8
 
@@ -174,6 +174,13 @@ linking phases of any C or XS files.
     script_files = ['bin/foo', 'script/*']
 
 Minilla sets install script files as C<< ['script/*', 'bin/*'] >> by default.
+
+=item license
+
+    license="artistic_2"
+
+You can specify your favorite license on minil.toml. The license key is same as CPAN Meta spec 2.0.
+See L<CPAN::Meta::Spec>.
 
 =item PL_files
 

@@ -82,6 +82,7 @@ t/project/contributors.t
 t/project/detect_source_path.t
 t/project/dist_name.t
 t/project/from.t
+t/project/license.t
 t/project/meta.t
 t/project/meta_no_index.t
 t/project/script_files.t

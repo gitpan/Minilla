@@ -2,6 +2,7 @@ use strict;
 use warnings;
 use utf8;
 use Test::More;
+use Test::Requires 'Software::License';
 use t::Util;
 
 use CPAN::Meta;
@@ -23,6 +24,7 @@ subtest 'develop deps' => sub {
         email => 'tokuhirom@example.com',
     );
     $profile->generate();
+
     write_minil_toml('Acme-Foo');
 
     git_init();
