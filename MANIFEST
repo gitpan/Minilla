@@ -75,9 +75,11 @@ t/migrate/tmpfiles.t
 t/module_maker/PL_files.t
 t/module_maker/allow_pureperl.t
 t/module_maker/c_source.t
+t/module_maker/xsutil.t
 t/new/dist-name.t
 t/profile-xs.t
 t/profile/module-build.t
+t/project/badge.t
 t/project/contributors.t
 t/project/detect_source_path.t
 t/project/dist_name.t
@@ -87,6 +89,7 @@ t/project/meta.t
 t/project/meta_no_index.t
 t/project/script_files.t
 t/project/unstable.t
+t/project/xsutil.t
 t/work_dir/_rewrite_pod.t
 t/work_dir/copy.t
 t/work_dir/dist.t

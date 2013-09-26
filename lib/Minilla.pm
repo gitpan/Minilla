@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v0.6.8");
+use version; our $VERSION = version->declare("v0.7.0");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -13,7 +13,7 @@ sub auto_install { $AUTO_INSTALL }
 1;
 __END__
 
-=for stopwords MINILLA .mailmap mimick
+=for stopwords MINILLA .mailmap mimick XSUtil travis XSUtil.needs_compiler_cpp XSUtil.generate_xshelper_h XSUtil.cc_warnings
 
 =encoding utf8
 
@@ -182,6 +182,12 @@ Minilla sets install script files as C<< ['script/*', 'bin/*'] >> by default.
 You can specify your favorite license on minil.toml. The license key is same as CPAN Meta spec 2.0.
 See L<CPAN::Meta::Spec>.
 
+=item badges
+
+    badges = ['travis', 'coveralls']
+
+Embed badges image (e.g. Travis-CI) to README.md. It ought to be array and each elements must be service name. Now, supported services are only 'travis' and 'coveralls'.
+
 =item PL_files
 
 Specify the PL files.
@@ -195,6 +201,41 @@ Specify a custom Module::Build subclass.
 
     [build]
     build_class = builder::MyBuilder
+
+=item XSUtil.needs_compiler_c99
+
+    [XSUtil]
+    needs_compiler_c99 = 1
+
+You can specify C<needs_compiler_c99> parameter of L<Module::Build::XSUtil>.
+
+=item XSUtil.needs_compiler_cpp
+
+    [XSUtil]
+    needs_compiler_cpp = 1
+
+You can specify C<needs_compiler_cpp> parameter of L<Module::Build::XSUtil>.
+
+=item XSUtil.generate_ppport_h
+
+    [XSUtil]
+    generate_ppport_h = 1
+
+You can specify C<generate_ppport_h> parameter of L<Module::Build::XSUtil>.
+
+=item XSUtil.generate_xshelper_h
+
+    [XSUtil]
+    generate_xshelper_h = 1
+    
+You can specify C<generate_xshelper_h> parameter of L<Module::Build::XSUtil>.
+
+=item XSUtil.cc_warnings
+
+    [XSUtil]
+    cc_warnings = 1
+
+You can specify C<cc_warnings> parameter of L<Module::Build::XSUtil>.
 
 =item FileGatherer.exclude_match
 
@@ -219,7 +260,7 @@ In almost all cases, the default value (false) is correct.
     [release]
     pause_config="/path/to/some/.pause"
 
-By setting this value to another PAUSE configuration file (see 
+By setting this value to another PAUSE configuration file (see
 L<cpan_upload/CONFIGURATION> for the details), it is possible to use another
 PAUSE server (or anything good enough to mimick its upload process) for the
 release step.

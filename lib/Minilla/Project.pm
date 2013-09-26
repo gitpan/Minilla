@@ -127,6 +127,51 @@ sub abstract {
     $self->config->{abstract} || $self->metadata->abstract;
 }
 
+sub badges {
+    my $self = shift;
+    $self->config->{badges} || [];
+}
+
+sub use_xsutil {
+    my $self = shift;
+    return defined $self->config->{XSUtil} ? 1 : 0;
+}
+
+sub needs_compiler_c99 {
+    my $self = shift;
+    if( my $xsutil = $self->config->{XSUtil} ){
+        return $xsutil->{needs_compiler_c99} ? 1 : 0;
+    }
+}
+
+sub needs_compiler_cpp {
+    my $self = shift;
+    if( my $xsutil = $self->config->{XSUtil} ){
+        return $xsutil->{needs_compiler_cpp} ? 1 : 0;
+    }
+}
+
+sub generate_ppport_h {
+    my $self = shift;
+    if( my $xsutil = $self->config->{XSUtil} ){
+        return $xsutil->{generate_ppport_h} || 0;
+    }
+}
+
+sub generate_xshelper_h {
+    my $self = shift;
+    if( my $xsutil = $self->config->{XSUtil} ){
+        return $xsutil->{generate_xshelper_h} || 0;
+    }
+}
+
+sub cc_warnings{
+    my $self = shift;
+    if( my $xsutil = $self->config->{XSUtil} ){
+        return $xsutil->{cc_warnings} ? 1 : 0;
+    }
+}
+
 sub _build_dir {
     my $self = shift;
 
@@ -202,8 +247,10 @@ sub _build_build_class {
     if (my $conf = $self->config) {
         $build_class = $conf->{build}{build_class};
     }
+    
+    return $build_class if $build_class;
 
-    return $build_class || 'Module::Build';
+    return $self->use_xsutil ? 'Module::Build::XSUtil' : 'Module::Build';
 }
 
 sub _build_main_module_path {
@@ -297,7 +344,7 @@ sub cpan_meta {
 
     my $cpanfile = $self->load_cpanfile;
     my $merged_prereqs = $cpanfile->prereqs->with_merged_prereqs(
-        CPAN::Meta::Prereqs->new($self->module_maker->prereqs)
+        CPAN::Meta::Prereqs->new($self->module_maker->prereqs($self))
     );
     $merged_prereqs = $merged_prereqs->with_merged_prereqs(
         CPAN::Meta::Prereqs->new(Minilla::ReleaseTest->prereqs)
@@ -358,40 +405,63 @@ sub cpan_meta {
     }
 
     # fill repository information
-    {
-        my $guard = pushd($self->dir);
-        if ( `git remote show -n origin` =~ /URL: (.*)$/m && $1 ne 'origin' ) {
-            # XXX Make it public clone URL, but this only works with github
-            my $git_url = $1;
-            $git_url =~ s![\w\-]+\@([^:]+):!git://$1/!;
-            if ($git_url =~ /github\.com/) {
-                my $http_url = $git_url;
-                $http_url =~ s![\w\-]+\@([^:]+):!https://$1/!;
-                $http_url =~ s!\Agit://!https://!;
-                $http_url =~ s!\.git$!!;
-                unless ($self->config->{no_github_issues}) {
-                    $dat->{resources}->{bugtracker} = +{
-                        web => "$http_url/issues",
-                    };
-                }
-                $dat->{resources}->{repository} = +{
-                    url => $git_url,
-                    web => $http_url,
-                };
-                $dat->{resources}->{homepage} = $self->config->{homepage} || $http_url;
-            } else {
-                # normal repository
-                if ($git_url !~ m{^file://}) {
-                    $dat->{resources}->{repository} = +{
-                        url => $git_url,
-                    };
-                }
-            }
-        }
+    my $git_info = $self->extract_git_info;
+    if ($git_info->{bugtracker}) {
+        $dat->{resources}->{bugtracker} = $git_info->{bugtracker};
+    }
+    if ($git_info->{repository}) {
+        $dat->{resources}->{repository} = $git_info->{repository};
+    }
+    if ($git_info->{homepage}) {
+        $dat->{resources}->{homepage}   = $git_info->{homepage};
     }
 
     my $meta = CPAN::Meta->new($dat);
     return $meta;
+}
+
+sub extract_git_info {
+    my $self = shift;
+
+    my $guard = pushd($self->dir);
+
+    my $bugtracker;
+    my $repository;
+    my $homepage;
+    if ( `git remote show -n origin` =~ /URL: (.*)$/m && $1 ne 'origin' ) {
+        # XXX Make it public clone URL, but this only works with github
+        my $git_url = $1;
+        $git_url =~ s![\w\-]+\@([^:]+):!git://$1/!;
+        if ($git_url =~ /github\.com/) {
+            my $http_url = $git_url;
+            $http_url =~ s![\w\-]+\@([^:]+):!https://$1/!;
+            $http_url =~ s!\Agit://!https://!;
+            $http_url =~ s!\.git$!!;
+            unless ($self->config->{no_github_issues}) {
+                $bugtracker = +{
+                    web => "$http_url/issues",
+                };
+            }
+            $repository = +{
+                url => $git_url,
+                web => $http_url,
+            };
+            $homepage = $self->config->{homepage} || $http_url;
+        } else {
+            # normal repository
+            if ($git_url !~ m{^file://}) {
+                $repository = +{
+                    url => $git_url,
+                };
+            }
+        }
+    }
+
+    return +{
+        bugtracker => $bugtracker,
+        repository => $repository,
+        homepage   => $homepage,
+    }
 }
 
 sub readme_from {
@@ -426,7 +496,34 @@ sub regenerate_readme_md {
     $parser->parse_from_file($self->readme_from);
 
     my $fname = File::Spec->catfile($self->dir, 'README.md');
-    spew_raw($fname, $parser->as_markdown);
+    my $markdown = $parser->as_markdown;
+
+    if (ref $self->badges eq 'ARRAY' && scalar @{$self->badges} > 0) {
+        my $user_name;
+        my $repository_name;
+
+        my $git_info = $self->extract_git_info;
+        if (my $web_url = $git_info->{repository}->{web}) {
+            ($user_name, $repository_name) = $web_url =~ m!https://.+/(.+)/(.+)!;
+        }
+
+        my @badges;
+        if ($user_name && $repository_name) {
+            for my $badge (@{$self->badges}) {
+                if ($badge eq 'travis') {
+                    push @badges, "[![Build Status](https://travis-ci.org/$user_name/$repository_name.png?branch=master)](https://travis-ci.org/$user_name/$repository_name)";
+                }
+                if ($badge eq 'coveralls') {
+                    push @badges, "[![Coverage Status](https://coveralls.io/repos/$user_name/$repository_name/badge.png?branch=master)](https://coveralls.io/r/$user_name/$repository_name?branch=master)"
+                }
+            }
+        }
+
+        $markdown = "\n" . $markdown;
+        $markdown = join(' ', @badges) . $markdown
+    }
+
+    spew_raw($fname, $markdown);
 }
 
 sub verify_prereqs {
@@ -489,4 +586,5 @@ sub perl_files {
 sub PL_files { shift->config->{PL_files} || +{} }
 
 1;
+
 
