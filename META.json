@@ -96,7 +96,7 @@
    "provides" : {
       "Minilla" : {
          "file" : "lib/Minilla.pm",
-         "version" : "v0.7.3"
+         "version" : "v0.7.4"
       },
       "Minilla::CLI" : {
          "file" : "lib/Minilla/CLI.pm"
@@ -236,7 +236,7 @@
          "web" : "https://github.com/tokuhirom/Minilla"
       }
    },
-   "version" : "v0.7.3",
+   "version" : "v0.7.4",
    "x_authority" : "cpan:TOKUHIROM",
    "x_contributors" : [
       "mattn <mattn.jp@gmail.com>",
