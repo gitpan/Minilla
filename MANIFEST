@@ -58,6 +58,7 @@ t/05_metadata.t
 t/Util.pm
 t/bumpversion.t
 t/cli/build.t
+t/cli/regenerate_BuildPL.t
 t/cli/release.t
 t/data/bsd.dat
 t/dist.t
