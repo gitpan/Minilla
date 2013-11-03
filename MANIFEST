@@ -50,6 +50,7 @@ lib/Minilla/Tutorial.pod
 lib/Minilla/Util.pm
 lib/Minilla/WorkDir.pm
 lib/Module/BumpVersion.pm
+minil.toml
 script/minil
 t/00_compile.t
 t/01_load_all.t
@@ -76,6 +77,7 @@ t/migrate/tmpfiles.t
 t/module_maker/PL_files.t
 t/module_maker/allow_pureperl.t
 t/module_maker/c_source.t
+t/module_maker/tap_harness_args.t
 t/module_maker/xsutil.t
 t/new/dist-name.t
 t/profile-xs.t

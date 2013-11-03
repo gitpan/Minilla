@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v0.8.1");
+use version; our $VERSION = version->declare("v0.8.2");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -180,6 +180,13 @@ linking phases of any C or XS files.
     script_files = ['bin/foo', 'script/*']
 
 Minilla sets install script files as C<< ['script/*', 'bin/*'] >> by default.
+
+=item tap_harness_args(EXPERIMENTAL)
+
+    [tap_harness_args]
+    jobs=19
+
+This parameters pass to TAP::Harness when running tests. See the L<TAP::Harness> documentation for details.
 
 =item license
 
