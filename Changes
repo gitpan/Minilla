@@ -1,5 +1,10 @@
 Revision history for Perl extension Minilla
 
+v0.8.4 2013-11-11T06:59:28Z
+
+    - Add 5.18 to default .travis.yml
+      (tagomoris)
+
 v0.8.3 2013-11-05T02:59:38Z
 
     [BUG FIX]

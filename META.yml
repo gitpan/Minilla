@@ -13,7 +13,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.8.1, CPAN::Meta::Converter version 2.132510'
+generated_by: 'Minilla/v0.8.3, CPAN::Meta::Converter version 2.132830'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -32,7 +32,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.8.3
+    version: v0.8.4
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
   Minilla::CLI::Build:
@@ -152,7 +152,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.8.3
+version: v0.8.4
 x_authority: cpan:TOKUHIROM
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
@@ -176,4 +176,5 @@ x_contributors:
   - 'Shoichi Kaji <skaji@outlook.com>'
   - 'Kenichi Ishigaki <ishigaki@cpan.org>'
   - 'Hiroyuki Akabane <hirobanex@gmail.com>'
+  - 'TAGOMORI Satoshi <tagomoris@gmail.com>'
   - 'tokuhirom <tokuhirom@gmail.com>'
