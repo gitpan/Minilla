@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v0.8.4");
+use version; our $VERSION = version->declare("v0.9.0");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -253,7 +253,7 @@ You can specify C<cc_warnings> parameter of L<Module::Build::XSUtil>.
 =item FileGatherer.exclude_match
 
     [FileGatherer]
-    exclude_match=['^author_tools/.*']
+    exclude_match = ['^author_tools/.*']
 
 Nothing by default. To exclude certain files from being gathered into dist, use the
 C<exclude_match> option. Files matching the patterns are not gathered.
@@ -261,7 +261,7 @@ C<exclude_match> option. Files matching the patterns are not gathered.
 =item FileGatherer.include_dotfiles
 
     [FileGatherer]
-    include_dotfiles=false
+    include_dotfiles = false
 
 By default, files will not be included in dist if they begin with a dot. This goes
 both for files and for directories.
@@ -271,7 +271,7 @@ In almost all cases, the default value (false) is correct.
 =item release.pause_config
 
     [release]
-    pause_config="/path/to/some/.pause"
+    pause_config = "/path/to/some/.pause"
 
 By setting this value to another PAUSE configuration file (see
 L<cpan_upload/CONFIGURATION> for the details), it is possible to use another
@@ -284,6 +284,13 @@ server, i.e :
     upload_uri http://127.0.0.1:5000/pause/authenquery
 
 If you instantly launch your origin upload server as DarkPAN, See L<OrePAN2::Server>.
+
+=item release.do_not_upload_to_cpan
+
+    [release]
+    do_not_upload_to_cpan=true
+
+This variable disables CPAN upload feature.
 
 =back
 
@@ -299,11 +306,11 @@ You can merge accounts by .mailmap file. See L<https://www.kernel.org/pub/softwa
 
 =item Why don't you provide plug-in support?
 
-If you want to pluggable thing, it's already exist dzil :P
-And if you like a behavior like Minilla, you can use L<Dist::Milla>, the sister project of Minilla.
-L<Dist::Milla>'s behavior is mostly like Minilla.
+If you want a pluggable tool, it already exists: It's called L<Dist::Zilla> :P
+If you like Minilla's behavior but you really want something pluggable, you can use L<Dist::Milla>, Minilla's sister project.
+L<Dist::Milla>'s behavior is almost identical to that of Minilla.
 
-=item Why minil only supports git?
+=item Why does minil only support git?
 
 I think git is a best VC for CPAN modules, for now.
 
@@ -329,6 +336,12 @@ Your executables must be in F<script/>. It's L<Module::Build::Tiny>'s rule.
 
 You can use experimental `minil migrate` sub-command.
 See L<Minilla::CLI::Migrate> for more details.
+
+=item How should I manage the files you do not want to upload to CPAN?
+
+Please use FileGatherer.exclude_match for ignoring files to upload tar ball.
+
+You can use MANIFEST.SKIP file for ignoring files. ref. L<ExtUtils::Manifest>.
 
 =back
 

@@ -13,7 +13,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.8.3, CPAN::Meta::Converter version 2.132830'
+generated_by: 'Minilla/v0.8.4, CPAN::Meta::Converter version 2.132830'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -32,7 +32,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.8.4
+    version: v0.9.0
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
   Minilla::CLI::Build:
@@ -152,7 +152,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.8.4
+version: v0.9.0
 x_authority: cpan:TOKUHIROM
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
@@ -167,7 +167,6 @@ x_contributors:
   - 'GeJ <geraud@hyaku.nijuu.nana>'
   - 'Ryo Okamoto <ryo@aquahill.net>'
   - 'Oleg Gashev <oleg@gashev.net>'
-  - 'Daisuke Maki <lestrrat+github@gmail.com>'
   - 'keita.iseki <keita.iseki@gmail.com>'
   - 'moznion <moznion@gmail.com>'
   - 'hideo55 <hide.o.j55@gmail.com>'
@@ -177,4 +176,5 @@ x_contributors:
   - 'Kenichi Ishigaki <ishigaki@cpan.org>'
   - 'Hiroyuki Akabane <hirobanex@gmail.com>'
   - 'TAGOMORI Satoshi <tagomoris@gmail.com>'
+  - 'Daisuke Maki <lestrrat+github@gmail.com>'
   - 'tokuhirom <tokuhirom@gmail.com>'
