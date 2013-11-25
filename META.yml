@@ -13,7 +13,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.9.0, CPAN::Meta::Converter version 2.132830'
+generated_by: 'Minilla/v0.9.1, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -32,91 +32,133 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.9.1
+    version: v0.10.0
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
+    version: 0
   Minilla::CLI::Build:
     file: lib/Minilla/CLI/Build.pm
+    version: 0
   Minilla::CLI::Clean:
     file: lib/Minilla/CLI/Clean.pm
+    version: 0
   Minilla::CLI::Dist:
     file: lib/Minilla/CLI/Dist.pm
+    version: 0
   Minilla::CLI::Help:
     file: lib/Minilla/CLI/Help.pm
+    version: 0
   Minilla::CLI::Install:
     file: lib/Minilla/CLI/Install.pm
+    version: 0
   Minilla::CLI::Migrate:
     file: lib/Minilla/CLI/Migrate.pm
+    version: 0
   Minilla::CLI::New:
     file: lib/Minilla/CLI/New.pm
+    version: 0
   Minilla::CLI::Release:
     file: lib/Minilla/CLI/Release.pm
+    version: 0
   Minilla::CLI::Run:
     file: lib/Minilla/CLI/Run.pm
+    version: 0
   Minilla::CLI::Test:
     file: lib/Minilla/CLI/Test.pm
+    version: 0
   Minilla::Error::CommandExit:
     file: lib/Minilla/Errors.pm
+    version: 0
   Minilla::Errors:
     file: lib/Minilla/Errors.pm
+    version: 0
   Minilla::FileGatherer:
     file: lib/Minilla/FileGatherer.pm
+    version: 0
   Minilla::Git:
     file: lib/Minilla/Git.pm
+    version: 0
   Minilla::Gitignore:
     file: lib/Minilla/Gitignore.pm
+    version: 0
   Minilla::License::Perl_5:
     file: lib/Minilla/License/Perl_5.pm
+    version: 0
   Minilla::License::Unknown:
     file: lib/Minilla/License/Unknown.pm
+    version: 0
   Minilla::Logger:
     file: lib/Minilla/Logger.pm
+    version: 0
   Minilla::Metadata:
     file: lib/Minilla/Metadata.pm
+    version: 0
   Minilla::Migrate:
     file: lib/Minilla/Migrate.pm
+    version: 0
   Minilla::ModuleMaker::ModuleBuild:
     file: lib/Minilla/ModuleMaker/ModuleBuild.pm
+    version: 0
   Minilla::Profile::Base:
     file: lib/Minilla/Profile/Base.pm
+    version: 0
   Minilla::Profile::Default:
     file: lib/Minilla/Profile/Default.pm
+    version: 0
   Minilla::Profile::ModuleBuild:
     file: lib/Minilla/Profile/ModuleBuild.pm
+    version: 0
   Minilla::Profile::XS:
     file: lib/Minilla/Profile/XS.pm
+    version: 0
   Minilla::Project:
     file: lib/Minilla/Project.pm
+    version: 0
   Minilla::Release::BumpVersion:
     file: lib/Minilla/Release/BumpVersion.pm
+    version: 0
   Minilla::Release::CheckChanges:
     file: lib/Minilla/Release/CheckChanges.pm
+    version: 0
   Minilla::Release::CheckOrigin:
     file: lib/Minilla/Release/CheckOrigin.pm
+    version: 0
   Minilla::Release::CheckUntrackedFiles:
     file: lib/Minilla/Release/CheckUntrackedFiles.pm
+    version: 0
   Minilla::Release::Commit:
     file: lib/Minilla/Release/Commit.pm
+    version: 0
   Minilla::Release::DistTest:
     file: lib/Minilla/Release/DistTest.pm
+    version: 0
   Minilla::Release::MakeDist:
     file: lib/Minilla/Release/MakeDist.pm
+    version: 0
   Minilla::Release::RegenerateFiles:
     file: lib/Minilla/Release/RegenerateFiles.pm
+    version: 0
   Minilla::Release::RewriteChanges:
     file: lib/Minilla/Release/RewriteChanges.pm
+    version: 0
   Minilla::Release::Tag:
     file: lib/Minilla/Release/Tag.pm
+    version: 0
   Minilla::Release::UploadToCPAN:
     file: lib/Minilla/Release/UploadToCPAN.pm
+    version: 0
   Minilla::ReleaseTest:
     file: lib/Minilla/ReleaseTest.pm
+    version: 0
   Minilla::Util:
     file: lib/Minilla/Util.pm
+    version: 0
   Minilla::WorkDir:
     file: lib/Minilla/WorkDir.pm
+    version: 0
   Module::BumpVersion:
     file: lib/Module/BumpVersion.pm
+    version: 0
 recommends:
   CPAN::Uploader: 0
   Pod::Escapes: 0
@@ -136,6 +178,7 @@ requires:
   File::Which: 0
   File::pushd: 0
   Getopt::Long: 2.36
+  MRO::Compat: 0
   Module::CPANfile: 0.9025
   Module::Metadata: 1.000012
   Moo: 1.001
@@ -152,7 +195,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.9.1
+version: v0.10.0
 x_authority: cpan:TOKUHIROM
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
