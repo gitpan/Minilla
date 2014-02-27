@@ -145,6 +145,9 @@ sub cmd_perl {
         sitelibexp sitearchexp
         privlibexp archlibexp
     )};
+    if ($Config::Config{usevendorprefix}) {
+        @std_inc{'vendorarchexp', 'vendorlibexp'} = (1, 1);
+    }
     my @non_std_inc = map { $_ eq '.' ? $_ : File::Spec->rel2abs($_) }
                       grep { not $std_inc{$_} } @INC;
 

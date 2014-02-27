@@ -98,7 +98,7 @@
    "provides" : {
       "Minilla" : {
          "file" : "lib/Minilla.pm",
-         "version" : "v0.11.0"
+         "version" : "v0.11.1"
       },
       "Minilla::CLI" : {
          "file" : "lib/Minilla/CLI.pm"
@@ -238,7 +238,7 @@
          "web" : "https://github.com/tokuhirom/Minilla"
       }
    },
-   "version" : "v0.11.0",
+   "version" : "v0.11.1",
    "x_authority" : "cpan:TOKUHIROM",
    "x_contributors" : [
       "mattn <mattn.jp@gmail.com>",
@@ -261,8 +261,11 @@
       "TAGOMORI Satoshi <tagomoris@gmail.com>",
       "Daisuke Maki <lestrrat+github@gmail.com>",
       "Songmu <y.songmu@gmail.com>",
-      "Syohei YOSHIDA <syohex@gmail.com>",
       "moznion <moznion@gmail.com>",
+      "Jiro Nishiguchi <jiro@cpan.org>",
+      "Masahiro Nagano <kazeburo@gmail.com>",
+      "Helmut Wollmersdorfer <helmut@wollmersdorfer.at>",
+      "Syohei YOSHIDA <syohex@gmail.com>",
       "tokuhirom <tokuhirom@gmail.com>"
    ]
 }
