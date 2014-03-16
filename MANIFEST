@@ -43,6 +43,7 @@ lib/Minilla/Release/DistTest.pm
 lib/Minilla/Release/MakeDist.pm
 lib/Minilla/Release/RegenerateFiles.pm
 lib/Minilla/Release/RewriteChanges.pm
+lib/Minilla/Release/RunHooks.pm
 lib/Minilla/Release/Tag.pm
 lib/Minilla/Release/UploadToCPAN.pm
 lib/Minilla/ReleaseTest.pm
@@ -63,6 +64,7 @@ t/cli/clean.t
 t/cli/regenerate_BuildPL.t
 t/cli/release.t
 t/cli/release_notest.t
+t/cli/release_with_hooks.t
 t/data/bsd.dat
 t/dist.t
 t/dist/Acme-FooXS.dat

@@ -3,21 +3,21 @@ abstract: 'CPAN module authoring tool'
 author:
   - 'Tokuhiro Matsuno < tokuhirom@gmail.com >'
 build_requires:
-  CPAN::Meta::Validator: 0
-  File::Temp: 0
-  Test::More: 0.98
-  Test::Output: 0
-  Test::Requires: 0
+  CPAN::Meta::Validator: '0'
+  File::Temp: '0'
+  Test::More: '0.98'
+  Test::Output: '0'
+  Test::Requires: '0'
 configure_requires:
-  CPAN::Meta: 0
-  CPAN::Meta::Prereqs: 0
-  Module::Build: 0.38
+  CPAN::Meta: '0'
+  CPAN::Meta::Prereqs: '0'
+  Module::Build: '0.38'
 dynamic_config: 0
-generated_by: 'Minilla/v0.11.0, CPAN::Meta::Converter version 2.133380'
+generated_by: 'Minilla/v0.11.1, CPAN::Meta::Converter version 2.133380'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: Minilla
 no_index:
   directory:
@@ -32,7 +32,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.11.1
+    version: v0.12.0
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
   Minilla::CLI::Build:
@@ -105,6 +105,8 @@ provides:
     file: lib/Minilla/Release/RegenerateFiles.pm
   Minilla::Release::RewriteChanges:
     file: lib/Minilla/Release/RewriteChanges.pm
+  Minilla::Release::RunHooks:
+    file: lib/Minilla/Release/RunHooks.pm
   Minilla::Release::Tag:
     file: lib/Minilla/Release/Tag.pm
   Minilla::Release::UploadToCPAN:
@@ -118,41 +120,41 @@ provides:
   Module::BumpVersion:
     file: lib/Module/BumpVersion.pm
 recommends:
-  CPAN::Uploader: 0
-  Pod::Escapes: 0
-  Software::License: 0
-  Test::CPAN::Meta: 0
-  Test::MinimumVersion: 0.101080
-  Test::Pod: 0
+  CPAN::Uploader: '0'
+  Pod::Escapes: '0'
+  Software::License: '0'
+  Test::CPAN::Meta: '0'
+  Test::MinimumVersion: '0.101080'
+  Test::Pod: '0'
   Test::Spellunker: v0.2.7
-  Version::Next: 0
+  Version::Next: '0'
 requires:
-  App::cpanminus: 1.6902
-  Archive::Tar: 1.60
-  CPAN::Meta: 0
-  Data::Section::Simple: 0.04
-  ExtUtils::Manifest: 1.54
-  File::Copy::Recursive: 0
-  File::Which: 0
-  File::pushd: 0
-  Getopt::Long: 2.36
-  Module::CPANfile: 0.9025
-  Module::Metadata: 1.000012
-  Moo: 1.001
-  Pod::Markdown: 1.322
-  TOML: 0.92
-  Term::ANSIColor: 0
-  Text::MicroTemplate: 0.20
-  Time::Piece: 1.16
-  Try::Tiny: 0
-  parent: 0
-  perl: 5.008005
-  version: 0
+  App::cpanminus: '1.6902'
+  Archive::Tar: '1.60'
+  CPAN::Meta: '0'
+  Data::Section::Simple: '0.04'
+  ExtUtils::Manifest: '1.54'
+  File::Copy::Recursive: '0'
+  File::Which: '0'
+  File::pushd: '0'
+  Getopt::Long: '2.36'
+  Module::CPANfile: '0.9025'
+  Module::Metadata: '1.000012'
+  Moo: '1.001'
+  Pod::Markdown: '1.322'
+  TOML: '0.92'
+  Term::ANSIColor: '0'
+  Text::MicroTemplate: '0.20'
+  Time::Piece: '1.16'
+  Try::Tiny: '0'
+  parent: '0'
+  perl: '5.008005'
+  version: '0'
 resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.11.1
+version: v0.12.0
 x_authority: cpan:TOKUHIROM
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
@@ -170,14 +172,15 @@ x_contributors:
   - 'ITO Nobuaki <daydream.trippers@gmail.com>'
   - 'ysasaki <aloelight@gmail.com>'
   - 'Shoichi Kaji <skaji@outlook.com>'
-  - 'Kenichi Ishigaki <ishigaki@cpan.org>'
   - 'Hiroyuki Akabane <hirobanex@gmail.com>'
   - 'TAGOMORI Satoshi <tagomoris@gmail.com>'
   - 'Daisuke Maki <lestrrat+github@gmail.com>'
   - 'Songmu <y.songmu@gmail.com>'
-  - 'moznion <moznion@gmail.com>'
   - 'Jiro Nishiguchi <jiro@cpan.org>'
   - 'Masahiro Nagano <kazeburo@gmail.com>'
   - 'Helmut Wollmersdorfer <helmut@wollmersdorfer.at>'
   - 'Syohei YOSHIDA <syohex@gmail.com>'
+  - 'Kenichi Ishigaki <ishigaki@cpan.org>'
+  - 'Graham Knop <haarg@haarg.org>'
+  - 'moznion <moznion@gmail.com>'
   - 'tokuhirom <tokuhirom@gmail.com>'
