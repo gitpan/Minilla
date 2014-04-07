@@ -23,6 +23,7 @@ requires 'App::cpanminus', '1.6902';
 requires 'Module::CPANfile', '0.9025';
 requires 'Module::Metadata' => '1.000012';
 requires 'Pod::Markdown', '1.322';
+requires 'Config::Identity';
 
 # File operation
 requires 'File::pushd';
@@ -47,13 +48,14 @@ requires 'Try::Tiny';
 requires 'Getopt::Long', 2.36;
 
 # Module required for license otherwise Perl_5 license.
-recommends 'Software::License';
+recommends 'Software::License', '0.103010';
 
 # release testing
 recommends 'Test::Pod';
 recommends 'Test::Spellunker', 'v0.2.7';
 recommends 'Test::MinimumVersion' => '0.101080';
 recommends 'Test::CPAN::Meta';
+recommends 'Test::PAUSE::Permissions';
 
 on 'test' => sub {
     requires 'Test::More' => '0.98';
