@@ -32,7 +32,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v0.14.0
+    version: v0.14.1
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
   Minilla::CLI::Build:
@@ -156,7 +156,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v0.14.0
+version: v0.14.1
 x_authority: cpan:TOKUHIROM
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
