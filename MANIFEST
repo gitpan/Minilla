@@ -29,9 +29,11 @@ lib/Minilla/Logger.pm
 lib/Minilla/Metadata.pm
 lib/Minilla/Migrate.pm
 lib/Minilla/ModuleMaker/ModuleBuild.pm
+lib/Minilla/ModuleMaker/ModuleBuildTiny.pm
 lib/Minilla/Profile/Base.pm
 lib/Minilla/Profile/Default.pm
 lib/Minilla/Profile/ModuleBuild.pm
+lib/Minilla/Profile/ModuleBuildTiny.pm
 lib/Minilla/Profile/XS.pm
 lib/Minilla/Project.pm
 lib/Minilla/Release/BumpVersion.pm
@@ -82,6 +84,7 @@ t/module_maker/PL_files.t
 t/module_maker/allow_pureperl.t
 t/module_maker/c_source.t
 t/module_maker/tap_harness_args.t
+t/module_maker/tiny.t
 t/module_maker/xsutil.t
 t/new/dist-name.t
 t/profile-xs.t
