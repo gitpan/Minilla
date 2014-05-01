@@ -85,6 +85,7 @@ t/module_maker/allow_pureperl.t
 t/module_maker/c_source.t
 t/module_maker/tap_harness_args.t
 t/module_maker/tiny.t
+t/module_maker/tiny/run_tests.t
 t/module_maker/xsutil.t
 t/new/dist-name.t
 t/profile-xs.t
