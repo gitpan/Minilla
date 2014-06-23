@@ -16,6 +16,8 @@ use Minilla::Util qw(spew_raw);
 sub generate {
     my ($self, $project) = @_;
 
+    Carp::croak('Usage: $module_maker->generate($project)') unless defined $project;
+
     local $Data::Dumper::Terse = 1;
     local $Data::Dumper::Useqq = 1;
     local $Data::Dumper::Purity = 1;
@@ -28,12 +30,20 @@ sub generate {
 
 sub prereqs {
     my ($self, $project) = @_;
+
+    Carp::croak('Usage: $module_maker->prereqs($project)') unless defined $project;
+
+    my %configure_requires = (
+        'Module::Build'       => $project->module_build_version,
+    );
+    if ($project->requires_external_bin && @{$project->requires_external_bin}) {
+        $configure_requires{'Devel::CheckBin'} = 0;
+    }
+
     my $prereqs = +{
         configure => {
             requires => {
-                'Module::Build'       => $project->module_build_version,
-                'CPAN::Meta'          => 0,
-                'CPAN::Meta::Prereqs' => 0,
+                %configure_requires,
             }
         }
     };
@@ -69,9 +79,15 @@ use utf8;
 use <?= $project->build_class ?>;
 use File::Basename;
 use File::Spec;
-use CPAN::Meta;
-use CPAN::Meta::Prereqs;
 
+? if ( @{ $project->requires_external_bin || [] } ) {
+use Devel::CheckBin;
+
+?   for my $bin ( @{ $project->requires_external_bin } ) {
+check_bin('<?= $bin ?>');
+?   }
+
+? }
 my %args = (
     license              => 'perl',
     dynamic_config       => 0,
@@ -120,20 +136,15 @@ my $builder = <?= $project->build_class ?>->subclass(
 )->new(%args);
 $builder->create_build_script();
 
-my $mbmeta = CPAN::Meta->load_file('MYMETA.json');
-my $meta = CPAN::Meta->load_file('META.json');
-my $prereqs_hash = CPAN::Meta::Prereqs->new(
-    $meta->prereqs
-)->with_merged_prereqs(
-    CPAN::Meta::Prereqs->new($mbmeta->prereqs)
-)->as_string_hash;
-my $mymeta = CPAN::Meta->new(
-    {
-        %{$meta->as_struct},
-        prereqs => $prereqs_hash
-    }
-);
-print "Merging cpanfile prereqs to MYMETA.yml\n";
-$mymeta->save('MYMETA.yml', { version => 1.4 });
-print "Merging cpanfile prereqs to MYMETA.json\n";
-$mymeta->save('MYMETA.json', { version => 2 });
+use File::Copy;
+
+print "cp META.json MYMETA.json\n";
+copy("META.json","MYMETA.json") or die "Copy failed(META.json): $!";
+
+if (-f 'META.yml') {
+    print "cp META.yml MYMETA.yml\n";
+    copy("META.yml","MYMETA.yml") or die "Copy failed(META.yml): $!";
+} else {
+    print "There is no META.yml... You may install this module from the repository...\n";
+}
+

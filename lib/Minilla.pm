@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v1.1.0");
+use version; our $VERSION = version->declare("v2.0.0");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -308,6 +308,13 @@ Commands that are specified by this option will be executed when releasing. If r
     MinimumVersion = false
 
 If you set this key false, Minilla will not generate 'xt/minilla/minimum_version.t'.
+
+=item requires_external_bin
+
+    requires_external_bin=['tar']
+
+The C<requires_external_bin> command takes the name of a system command
+or program. Build fail if the command does not exist.
 
 =back
 
