@@ -11,6 +11,7 @@ use Time::Piece qw(gmtime);
 use File::Basename qw(dirname);
 use File::Path qw(mkpath);
 use File::Copy qw(copy);
+use Config;
 
 use Minilla::Logger;
 use Minilla::Util qw(randstr cmd cmd_perl slurp slurp_raw spew spew_raw pod_escape);
@@ -76,9 +77,16 @@ sub _build_prereq_specs {
 
 sub _build_manifest_files {
     my $self = shift;
+    my @files = (@{$self->files}, qw(LICENSE META.json META.yml MANIFEST));
+    if (-f File::Spec->catfile($self->dir, 'Makefile.PL')) {
+        push @files, 'Makefile.PL';
+    } else {
+        push @files, 'Build.PL';
+    }
+
     [do {
         my %h;
-        grep {!$h{$_}++} @{$self->files}, qw(Build.PL LICENSE META.json META.yml MANIFEST);
+        grep {!$h{$_}++} @files;
     }];
 }
 
@@ -143,8 +151,15 @@ sub build {
         Minilla::ReleaseTest->write_release_tests($self->project, $self->dir);
     }
 
-    cmd_perl('Build.PL');
-    cmd_perl('Build', 'build');
+    if (-f 'Build.PL') {
+        cmd_perl('Build.PL');
+        cmd_perl('Build', 'build');
+    } elsif (-f 'Makefile.PL') {
+        cmd_perl('Makefile.PL');
+        cmd($Config{make});
+    } else {
+       die "There is no Makefile.PL/Build.PL";
+    }
 }
 
 sub _rewrite_changes {

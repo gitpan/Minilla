@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno < tokuhirom@gmail.com >"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v1.1.0",
+   "generated_by" : "Minilla/v2.0.0",
    "license" : [
       "perl_5"
    ],
@@ -100,7 +100,7 @@
    "provides" : {
       "Minilla" : {
          "file" : "lib/Minilla.pm",
-         "version" : "v2.0.0"
+         "version" : "v2.1.0"
       },
       "Minilla::CLI" : {
          "file" : "lib/Minilla/CLI.pm"
@@ -165,6 +165,9 @@
       "Minilla::Migrate" : {
          "file" : "lib/Minilla/Migrate.pm"
       },
+      "Minilla::ModuleMaker::ExtUtilsMakeMaker" : {
+         "file" : "lib/Minilla/ModuleMaker/ExtUtilsMakeMaker.pm"
+      },
       "Minilla::ModuleMaker::ModuleBuild" : {
          "file" : "lib/Minilla/ModuleMaker/ModuleBuild.pm"
       },
@@ -176,6 +179,9 @@
       },
       "Minilla::Profile::Default" : {
          "file" : "lib/Minilla/Profile/Default.pm"
+      },
+      "Minilla::Profile::ExtUtilsMakeMaker" : {
+         "file" : "lib/Minilla/Profile/ExtUtilsMakeMaker.pm"
       },
       "Minilla::Profile::ModuleBuild" : {
          "file" : "lib/Minilla/Profile/ModuleBuild.pm"
@@ -249,7 +255,7 @@
          "web" : "https://github.com/tokuhirom/Minilla"
       }
    },
-   "version" : "v2.0.0",
+   "version" : "v2.1.0",
    "x_authority" : "cpan:TOKUHIROM",
    "x_contributors" : [
       "mattn <mattn.jp@gmail.com>",

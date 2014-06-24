@@ -11,7 +11,7 @@ build_requires:
 configure_requires:
   Module::Build: '0.38'
 dynamic_config: 0
-generated_by: 'Minilla/v1.1.0, CPAN::Meta::Converter version 2.141520'
+generated_by: 'Minilla/v2.0.0, CPAN::Meta::Converter version 2.141520'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -30,7 +30,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v2.0.0
+    version: v2.1.0
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
   Minilla::CLI::Build:
@@ -73,6 +73,8 @@ provides:
     file: lib/Minilla/Metadata.pm
   Minilla::Migrate:
     file: lib/Minilla/Migrate.pm
+  Minilla::ModuleMaker::ExtUtilsMakeMaker:
+    file: lib/Minilla/ModuleMaker/ExtUtilsMakeMaker.pm
   Minilla::ModuleMaker::ModuleBuild:
     file: lib/Minilla/ModuleMaker/ModuleBuild.pm
   Minilla::ModuleMaker::ModuleBuildTiny:
@@ -81,6 +83,8 @@ provides:
     file: lib/Minilla/Profile/Base.pm
   Minilla::Profile::Default:
     file: lib/Minilla/Profile/Default.pm
+  Minilla::Profile::ExtUtilsMakeMaker:
+    file: lib/Minilla/Profile/ExtUtilsMakeMaker.pm
   Minilla::Profile::ModuleBuild:
     file: lib/Minilla/Profile/ModuleBuild.pm
   Minilla::Profile::ModuleBuildTiny:
@@ -159,7 +163,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v2.0.0
+version: v2.1.0
 x_authority: cpan:TOKUHIROM
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'

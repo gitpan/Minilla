@@ -28,10 +28,12 @@ lib/Minilla/License/Unknown.pm
 lib/Minilla/Logger.pm
 lib/Minilla/Metadata.pm
 lib/Minilla/Migrate.pm
+lib/Minilla/ModuleMaker/ExtUtilsMakeMaker.pm
 lib/Minilla/ModuleMaker/ModuleBuild.pm
 lib/Minilla/ModuleMaker/ModuleBuildTiny.pm
 lib/Minilla/Profile/Base.pm
 lib/Minilla/Profile/Default.pm
+lib/Minilla/Profile/ExtUtilsMakeMaker.pm
 lib/Minilla/Profile/ModuleBuild.pm
 lib/Minilla/Profile/ModuleBuildTiny.pm
 lib/Minilla/Profile/XS.pm
@@ -83,6 +85,8 @@ t/migrate/tmpfiles.t
 t/module_maker/PL_files.t
 t/module_maker/allow_pureperl.t
 t/module_maker/c_source.t
+t/module_maker/eumm.t
+t/module_maker/eumm/run_tests.t
 t/module_maker/requires_external_bin.t
 t/module_maker/tap_harness_args.t
 t/module_maker/tiny.t
