@@ -11,7 +11,7 @@ build_requires:
 configure_requires:
   Module::Build: '0.38'
 dynamic_config: 0
-generated_by: 'Minilla/v2.0.0, CPAN::Meta::Converter version 2.141520'
+generated_by: 'Minilla/v2.1.0, CPAN::Meta::Converter version 2.141520'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -30,7 +30,7 @@ no_index:
 provides:
   Minilla:
     file: lib/Minilla.pm
-    version: v2.1.0
+    version: v2.1.1
   Minilla::CLI:
     file: lib/Minilla/CLI.pm
   Minilla::CLI::Build:
@@ -138,7 +138,7 @@ recommends:
 requires:
   App::cpanminus: '1.6902'
   Archive::Tar: '1.60'
-  CPAN::Meta: '0'
+  CPAN::Meta: '2.132830'
   Config::Identity: '0'
   Data::Section::Simple: '0.04'
   ExtUtils::Manifest: '1.54'
@@ -163,7 +163,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/Minilla/issues
   homepage: https://github.com/tokuhirom/Minilla
   repository: git://github.com/tokuhirom/Minilla.git
-version: v2.1.0
+version: v2.1.1
 x_authority: cpan:TOKUHIROM
 x_contributors:
   - 'mattn <mattn.jp@gmail.com>'
