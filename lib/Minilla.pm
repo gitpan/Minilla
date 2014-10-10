@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v2.1.1");
+use version; our $VERSION = version->declare("v2.1.2");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -181,6 +181,8 @@ linking phases of any C or XS files.
 
 Minilla sets install script files as C<< ['script/*', 'bin/*'] >> by default.
 
+(Note. This option doesn't affect anything if you are using ModuleBuildTiny or ExtUtilsMakeMaker, for now. If you are using ModuleBuildTiny, you MUST put scripts in bin/ directory.)
+
 =item tap_harness_args(EXPERIMENTAL)
 
     [tap_harness_args]
@@ -197,9 +199,9 @@ See L<CPAN::Meta::Spec>.
 
 =item badges
 
-    badges = ['travis', 'coveralls']
+    badges = ['travis', 'coveralls', 'gitter']
 
-Embed badges image (e.g. Travis-CI) to README.md. It ought to be array and each elements must be service name. Now, supported services are only 'travis' and 'coveralls'.
+Embed badges image (e.g. Travis-CI) to README.md. It ought to be array and each elements must be service name. Now, supported services are only 'travis', 'coveralls' and 'gitter'.
 
 =item PL_files
 

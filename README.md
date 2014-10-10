@@ -152,6 +152,8 @@ But, you can write configurations to _minil.toml_ file in [TOML](https://github.
 
     Minilla sets install script files as `['script/*', 'bin/*']` by default.
 
+    (Note. This option doesn't affect anything if you are using ModuleBuildTiny or ExtUtilsMakeMaker, for now. If you are using ModuleBuildTiny, you MUST put scripts in bin/ directory.)
+
 - tap\_harness\_args(EXPERIMENTAL)
 
         [tap_harness_args]
@@ -168,9 +170,9 @@ But, you can write configurations to _minil.toml_ file in [TOML](https://github.
 
 - badges
 
-        badges = ['travis', 'coveralls']
+        badges = ['travis', 'coveralls', 'gitter']
 
-    Embed badges image (e.g. Travis-CI) to README.md. It ought to be array and each elements must be service name. Now, supported services are only 'travis' and 'coveralls'.
+    Embed badges image (e.g. Travis-CI) to README.md. It ought to be array and each elements must be service name. Now, supported services are only 'travis', 'coveralls' and 'gitter'.
 
 - PL\_files
 

@@ -470,8 +470,11 @@ sub extract_git_info {
     if ( `git remote show -n origin` =~ /URL: (.*)$/m && $1 ne 'origin' ) {
         # XXX Make it public clone URL, but this only works with github
         my $git_url = $1;
-        $git_url =~ s![\w\-]+\@([^:]+):!git://$1/!;
+        $git_url =~ s!(?:[\w\-]+\@)?([^:]+):!git://$1/!;
         if ($git_url =~ /github\.com/) {
+            if ( $git_url !~ /\@github/ ) {
+                $git_url =~ s/github\.com/git\@github.com/;
+            }
             my $http_url = $git_url;
             $http_url =~ s![\w\-]+\@([^:]+):!https://$1/!;
             $http_url =~ s!\Agit://!https://!;
@@ -582,10 +585,13 @@ sub regenerate_readme_md {
         if ($user_name && $repository_name) {
             for my $badge (@{$self->badges}) {
                 if ($badge eq 'travis') {
-                    push @badges, "[![Build Status](https://travis-ci.org/$user_name/$repository_name.png?branch=master)](https://travis-ci.org/$user_name/$repository_name)";
+                    push @badges, "[![Build Status](https://travis-ci.org/$user_name/$repository_name.svg?branch=master)](https://travis-ci.org/$user_name/$repository_name)";
                 }
                 if ($badge eq 'coveralls') {
-                    push @badges, "[![Coverage Status](https://coveralls.io/repos/$user_name/$repository_name/badge.png?branch=master)](https://coveralls.io/r/$user_name/$repository_name?branch=master)"
+                    push @badges, "[![Coverage Status](https://img.shields.io/coveralls/$user_name/$repository_name/master.svg)](https://coveralls.io/r/$user_name/$repository_name?branch=master)"
+                }
+                if ($badge eq 'gitter') {
+                    push @badges, "[![Gitter chat](https://badges.gitter.im/$user_name/$repository_name.png)](https://gitter.im/$user_name/$repository_name)";
                 }
             }
         }
@@ -660,6 +666,17 @@ sub PL_files { shift->config->{PL_files} || +{} }
 sub requires_external_bin {
     my $self = shift;
     return $self->config->{requires_external_bin};
+}
+
+# @return true if the project is valid, false otherwise.
+sub validate {
+    my $self = shift;
+    my $module_maker = $self->module_maker;
+    if ($module_maker->can('validate')) {
+        return $module_maker->validate();
+    } else {
+        return 1;
+    }
 }
 
 1;
