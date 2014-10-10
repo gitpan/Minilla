@@ -2,7 +2,7 @@ package Minilla;
 use strict;
 use warnings;
 use 5.008005;
-use version; our $VERSION = version->declare("v2.1.2");
+use version; our $VERSION = version->declare("v2.1.3");
 
 our $DEBUG;
 our $AUTO_INSTALL;
@@ -209,6 +209,10 @@ Specify the PL files.
 
     [PL_files]
     lib/Foo/Bar.pm.PL="lib/Foo/Bar.pm"
+
+This option is not supported by L<Minilla::ModuleMaker::ModuleBuildTiny>.
+
+Note. MBTiny executes *.PL files by default.
 
 =item build.build_class
 

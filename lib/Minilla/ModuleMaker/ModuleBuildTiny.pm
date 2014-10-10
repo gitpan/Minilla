@@ -61,6 +61,11 @@ sub prereqs {
             die "$key does not supported by " . __PACKAGE__;
         }
     }
+    for my $key (qw(PL_files)) {
+        if( $project->$key && ref($project->$key) eq 'HASH' && %{$project->$key} > 0 ){
+            die "$key does not supported by " . __PACKAGE__;
+        }
+    }
     return $prereqs;
 }
 

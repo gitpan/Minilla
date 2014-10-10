@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno < tokuhirom@gmail.com >"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v2.1.1",
+   "generated_by" : "Minilla/v2.1.2",
    "license" : [
       "perl_5"
    ],
@@ -100,7 +100,7 @@
    "provides" : {
       "Minilla" : {
          "file" : "lib/Minilla.pm",
-         "version" : "v2.1.2"
+         "version" : "v2.1.3"
       },
       "Minilla::CLI" : {
          "file" : "lib/Minilla/CLI.pm"
@@ -247,15 +247,15 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/tokuhirom/Minilla/issues"
+         "web" : "https://git@github.com/tokuhirom/Minilla/issues"
       },
-      "homepage" : "https://github.com/tokuhirom/Minilla",
+      "homepage" : "https://git@github.com/tokuhirom/Minilla",
       "repository" : {
-         "url" : "git://github.com/tokuhirom/Minilla.git",
-         "web" : "https://github.com/tokuhirom/Minilla"
+         "url" : "git://git@github.com/tokuhirom/Minilla.git",
+         "web" : "https://git@github.com/tokuhirom/Minilla"
       }
    },
-   "version" : "v2.1.2",
+   "version" : "v2.1.3",
    "x_authority" : "cpan:TOKUHIROM",
    "x_contributors" : [
       "mattn <mattn.jp@gmail.com>",
